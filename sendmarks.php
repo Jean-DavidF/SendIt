@@ -4,25 +4,49 @@ use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
 
 ?>
+<html>
 <head>
     <meta charset="UTF-8">
+
+    <title>SendMark</title>
+
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Playfair+Display" rel="stylesheet">
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
 </head>
 
 <?php
     // Set parameters
     require 'parameters.php';
 ?>
-
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
-    <input type="file" id="file" name="file">
-    <br />
-    <label for="matiere">Indiquez une matière</label>
-    <input type="text" placeholder="Exemple : Algorithmique" name="matiere">
-    <br />
-    <label for="bareme">Indiquez votre barême</label>
-    <input type="text" placeholder="Exemple : / 20" name="bareme">
-    <input type="submit" value="Valider" name="submit">
-</form>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>IUT de Lens</h1>
+                <p>Envoi de notes</p>
+            </div>
+            <div class="content">
+                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
+                    <input type="file" id="file" name="file">
+                    <br />
+                    <label for="matiere">Indiquez une matière</label>
+                    <input type="text" placeholder="Exemple : Algorithmique" name="matiere">
+                    <br />
+                    <label for="bareme">Indiquez votre barême</label>
+                    <input type="text" placeholder="Exemple : / 20" name="bareme">
+                    <br />
+                    <input type="submit" value="Valider" name="submit">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
 
 
 <?php
@@ -106,9 +130,9 @@ if(isset($_POST["sendMail"])) {
             echo "Mailer Error: " . $mail->ErrorInfo;
         } else {
             echo "Message sent!";
-            if (save_mail($mail)) {
-                echo "Message saved!";
-            }
+            // if (save_mail($mail)) {
+            //     echo "Message saved!";
+            // }
         }
     }
 }
