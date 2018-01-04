@@ -1,5 +1,5 @@
 # SendMarks
-SendMarks application developped by <a href="https://github.com/ThomasLaigneau">Thomas Laigneau</a> and designed by <a href="https://github.com/Jean-DavidF">Jean-David Flament</a>
+SendMarks application developped by <a href="https://github.com/ThomasLaigneau">Thomas Laigneau</a> and <a href="https://github.com/Jean-DavidF">Jean-David Flament</a>
 
 # Requirements
 Create a "parameters.php" file at the project root with this content :
