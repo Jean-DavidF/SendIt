@@ -146,9 +146,9 @@ if(isset($_POST["sendMail"])) {
                         </div>';
         $mail->AltBody = 'This is a plain-text message body';
         if (!$mail->send()) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
+            echo "Erreur Mailer : " . $mail->ErrorInfo;
         } else {
-            echo "Message sent!";
+            echo "Message envoyé !";
             // if (save_mail($mail)) {
             //     echo "Message saved!";
             // }

@@ -23,6 +23,7 @@ $(document).ready(function() {
 		}
 	});
 
+	// Add or remove error to an input (or to a selection)
 	function addError(input, text, selection) {
 		if (!input.val()) {
 			selection ? $(selection).addClass(text) : input.addClass(text);
@@ -31,6 +32,7 @@ $(document).ready(function() {
 		}
 	}
 
+	// Check errors of the form
 	$(document).on('submit', '#form-sendmarks', function(event) {
 
 		var $file = $(this).find('input[name=file]');
