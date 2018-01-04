@@ -14,7 +14,7 @@ require 'vendor/autoload.php';
 
     <!-- Style -->
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato|Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Philosopher:400,400i,700,700i" rel="stylesheet">
 
     <!-- Javascript -->
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -26,30 +26,49 @@ require 'vendor/autoload.php';
     require 'parameters.php';
 ?>
     <body>
-        <div class="container">
-            <div class="header">
-                <h1>IUT de Lens</h1>
-                <p>Envoi de notes</p>
+
+        <div id="alerts" style="display: none;"></div>
+
+        <div class="wrapper">
+            <div class="container">
+                <div class="header">
+                    <h1>IUT de Lens</h1>
+                    <p>Envoi de notes</p>
+                </div>
+                <div class="content">
+                    <form id="form-sendmarks" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
+                        <label for="file">Insérez le fichier de note</label>
+                        <div class="input-form">
+                            <div class="file-upload-wrapper" data-text="Sélectionnez votre fichier">
+                                <input name="file" id="file" type="file" class="file-upload-field" value="">
+                            </div>
+                        </div>
+                        <br />
+                        <label for="matiere">Indiquez une matière</label>
+                        <input type="text" placeholder="Exemple : Algorithmique" name="matiere">
+                        <br />
+                        <label for="bareme">Indiquez votre barême</label>
+                        <input type="text" placeholder="Exemple : / 20" name="bareme">
+                        <br />
+                        <input class="submit" type="submit" value="Valider" name="submit">
+                    </form>
+                </div>
             </div>
-            <div class="content">
-                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
-                    <input type="file" id="file" name="file">
-                    <br />
-                    <label for="matiere">Indiquez une matière</label>
-                    <input type="text" placeholder="Exemple : Algorithmique" name="matiere">
-                    <br />
-                    <label for="bareme">Indiquez votre barême</label>
-                    <input type="text" placeholder="Exemple : / 20" name="bareme">
-                    <br />
-                    <input type="submit" value="Valider" name="submit">
-                </form>
-            </div>
+        </div>
+
+        <div class="footer">
+            <p>SendMarks, IUT de Lens</p>
+            <a href="http://www.iut-lens.univ-artois.fr/"><img src="img/LOGO_IUT_LENS.jpg" alt="logo-iut-lens" /></a>
         </div>
     </body>
 </html>
 
 
 <?php
+
+// if (empty($_FILES["file"]["name"]) || empty($_POST["matiere"]) || empty($_POST["bareme"])) {
+//     return false;
+// }
 
 if(isset($_POST["submit"])) {
     if ( isset($_FILES["file"])) {

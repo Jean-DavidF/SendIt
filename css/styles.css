@@ -20,9 +20,11 @@ html, body{
 }
 
 h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Philosopher', serif;
     margin: 5px;
     text-align: center;
+    font-size: 35px;
+    font-weight: 100;
 }
 
 a {
@@ -46,15 +48,58 @@ a:active {
     text-decoration: none;
 }
 
+body {
+    background: #fff;
+}
+
+.alert {
+    position: fixed;
+    top: 40px;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 15px;
+}
+
+.alert.error {
+    color: #fff;
+    background: #ed3b4a;
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+}
+
+#form-sendmarks {
+    text-align: center;
+}
+
+.input-error {
+    border: 1px solid #ed3b4a !important;
+}
+
+.footer p {
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+    font-size: 12px;
+}
+
+.footer img {
+    width: 60px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
 .container {
     width: 500px;
     height: 500px;
     position: absolute;
-    border: 1px solid lightgrey;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     border-radius: 5px;
+    background: #fcfcfc;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
 }
 
 .header {
@@ -62,11 +107,12 @@ a:active {
     padding-bottom: 15px;
     border-bottom: 1px solid lightgrey;
     padding: 15px;
-    background: #e32174;
     color: #fff;
+    background: #000232;
     font-weight: bold;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    text-align :center;
 }
 
 .header p {
@@ -75,9 +121,142 @@ a:active {
 }
 
 .content {
-    padding: 15px;
+    padding: 25px;
+}
+
+.content label {
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #000232;
+    font-weight: bold;
+    text-align: left;
 }
 
 label, input {
     display: block;
+}
+
+.input-form {
+    width: 100%;
+}
+
+.file-upload-wrapper {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.file-upload-wrapper:after {
+    content: attr(data-text);
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    padding: 10px 15px;
+    display: block;
+    width: calc(100% - 40px);
+    pointer-events: none;
+    z-index: 20;
+    height: 40px;
+    color: #999;
+    border-radius: 5px 10px 10px 5px;
+    font-weight: 300;
+    text-align: left;
+}
+
+.file-upload-wrapper:before {
+    content: 'Télécharger';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    height: 40px;
+    background: #e71d73;
+    color: #fff;
+    font-weight: 700;
+    z-index: 25;
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0 15px;
+    text-transform: uppercase;
+    pointer-events: none;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+    transition: background 100ms ease-in;
+}
+
+.file-upload-wrapper:hover:before {
+    background: #e01868;
+}
+
+.file-upload-wrapper input {
+    font-family: 'Lato', serif;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+}
+
+.content input[type=text] {
+    width: 100%;
+    background: #fff;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 5px;
+    border: none;
+    height: 40px;
+    padding: 10px 15px;
+    color: #999;
+    margin-top: 10px;
+    font-family: 'Lato', serif;
+    font-size: 14px;
+    outline: none;
+    transition: box-shadow 100ms ease-in;
+}
+
+.file-upload-wrapper.input-error {
+    border: none !important;
+}
+
+.file-upload-wrapper.input-error:after {
+    border: 1px solid #ed3b4a;
+}
+
+.content input[type=text]:focus {
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.11);
+}
+
+.content input[type=text]::placeholder {
+    color: #999;
+    font-family: 'Lato', serif;
+    font-size: 14px;
+}
+
+.content .submit {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 40px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: 'Lato', serif;
+    font-size: 14px;
+    background: #000232;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
