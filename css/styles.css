@@ -362,7 +362,15 @@ table {
 }
 
 table th:first-child {
-    width: 70px;
+    width: 60px;
+}
+
+table th:nth-child(2) {
+    width: 115px;
+}
+
+table th:last-child {
+    width: 80px;
 }
 
 table caption {
