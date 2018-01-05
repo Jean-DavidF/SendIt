@@ -138,14 +138,28 @@ $(document).ready(function() {
 				// As the opacity of currentContainer reduces to 0 - stored in "now"
 				// 1. Scale currentContainer down to 80%
 				scale = 1 - (1 - now) * 0.2;
+
 				// 2. Bring nextContainer from the right(50%)
-				left = ((now * 50) + 50)+"%";
+				if (window.matchMedia("(max-width: 550px)").matches) {
+					left = (now * 50)+"%";
+				} else { 
+					left = ((now * 50) + 50)+"%";
+				}
 				// 3. Increase opacity of nextContainer to 1 as it moves in
 				opacity = 1 - now;
-				currentContainer.css({
-			        'transform': 'translateX(-50%) translateY(-50%) scale('+scale+')',
-			        'position': 'absolute'
-	      		});
+
+				if (window.matchMedia("(max-width: 550px)").matches) {
+				  /* La largeur minimum de l'affichage est 600 px inclus */
+				  currentContainer.css({
+				        'transform': 'scale('+scale+')',
+				        'position': 'absolute'
+		      		});
+				} else {
+					currentContainer.css({
+				        'transform': 'translateX(-50%) translateY(-50%) scale('+scale+')',
+				        'position': 'absolute'
+		      		});
+				}
 
 				nextContainer.css({'left': left, 'opacity': opacity});
 			},

@@ -118,6 +118,27 @@ body {
     color: white;
 }
 
+@media screen and (max-height: 700px), screen and (max-width: 525px) {
+    #progressbar {
+        position: fixed;
+        top: 0px;
+        margin: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+        background: white;
+        padding: 15px;
+        left: 50%;
+        padding-left: 0px;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+        counter-reset: step;
+        z-index: 10;
+    }
+}
+
 /************************ ALERTS ************************/
 
 #alerts {
@@ -126,6 +147,7 @@ body {
     width: 300px;
     right: -320px;
     transition: all 200ms ease-in;
+    z-index: 99;
 }
 
 #alerts:hover {
@@ -156,6 +178,24 @@ body {
     font-family: 'Lato', serif;
     position: relative;
     top: -30px;
+}
+
+@media screen and (max-width: 525px) {
+    .msg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    .again {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        width: 300px;
+        transform: translateX(-50%) translateY(-50%);
+    }
 }
 
 .m-error i {
@@ -242,6 +282,48 @@ body {
     border-radius: 5px;
     background: #fcfcfc;
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+}
+
+@media screen and (max-width: 525px) {
+    .container {
+        width: 100%;
+        height: auto;
+        min-height: 500px;
+        position: absolute;
+        margin-top: 80px;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0px;
+        background: #fcfcfc;
+        box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+    }
+
+    .container .header {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    .footer img {
+        width: 40px;
+        bottom: 15px;
+    }
+
+    .file-upload-wrapper:before {
+        content: 'Télécharger' !important;
+        font-size: 9px !important;
+    }
+}
+
+@media screen and (max-height: 660px) {
+    .container {
+        margin-bottom: 75px;
+    }
+
+    .footer p, .footer img {
+        position: fixed;
+        z-index: -1;
+    }
 }
 
 #container-3 {
@@ -405,6 +487,12 @@ label, input {
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+@media screen and (max-width: 525px) {
+    .content .submit {
+        padding: 15px 25px;
+    }
 }
 
 /************************ TABLE RECAP ************************/
