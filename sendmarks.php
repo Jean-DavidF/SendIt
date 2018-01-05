@@ -4,6 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
 
 ?>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -18,6 +19,7 @@ require 'vendor/autoload.php';
 
     <!-- Javascript -->
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
 
@@ -27,16 +29,22 @@ require 'vendor/autoload.php';
 ?>
     <body>
 
-        <div id="alerts" style="display: none;"></div>
+        <div id="alerts"></div>
+
+        <ul id="progressbar">
+            <li class="active">Ajout des notes</li>
+            <li>Envoi des mails</li>
+            <li>Terminé</li>
+        </ul>
 
         <div class="wrapper">
             <div class="container">
                 <div class="header">
                     <h1>IUT de Lens</h1>
-                    <p>Envoi de notes</p>
+                    <p>Ajout des notes</p>
                 </div>
-                <div class="content">
-                    <form id="form-sendmarks" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
+                <div class="content" id="content-1">
+                    <form id="form-sendmarks" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
                         <label for="file">Insérez le fichier de note</label>
                         <div class="input-form">
                             <div class="file-upload-wrapper" data-text="Sélectionnez votre fichier">
@@ -50,8 +58,61 @@ require 'vendor/autoload.php';
                         <label for="bareme">Indiquez votre barême</label>
                         <input type="text" placeholder="Exemple : / 20" name="bareme">
                         <br />
-                        <input class="submit" type="submit" value="Valider" name="submit">
+                        <input id="submit" class="submit" type="submit" value="Valider" name="submit">
                     </form>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="header">
+                    <h1>IUT de Lens</h1>
+                    <p>Envoi des mails</p>
+                </div>
+                <div class="content" id="content-2">
+                    <?php
+                        if(isset($_POST)) {
+                            if ( isset($_FILES["file"])) {
+                                $file = $_FILES["file"]["name"];
+                                $matiere = $_POST["matiere"];
+                                $bareme = $_POST["bareme"];
+                                move_uploaded_file($_FILES["file"]["tmp_name"],$file);
+                                if (isset($file)) {
+                                    $row = 1;
+                                    $tab = array();
+                                    echo '<form method="post">';
+                                    echo '<input type="hidden" name="matiereValue" value="'.$matiere.'" />';            
+                                    echo '<input type="hidden" name="baremeValue" value="'.$bareme.'" />';    
+                                    echo '<div class="table-content">';     
+                                    echo '<table align="center">';
+                                    echo '<thead><tr><th>ID</th><th>N° Étudiant</th><th>Email</th><th>Note</th></thead>';
+                                    if (($handle = fopen($file, "r")) !== FALSE) {
+                                        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                                            $num = count($data);
+                                            $row++;
+                                            for ($c=0; $c < $num; $c++) {
+                                                $value = explode(";",$data[$c]);
+                                            }              
+                                            foreach($etudiants as $etudiant){
+                                                if($etudiant['numero'] == $value[0]){ 
+                                                    echo '<tr><td>
+                                                    <input type="hidden" name="tableau['.$etudiant["id"].'][email]" value="'.$etudiant['email'].'" />
+                                                    <input type="hidden" name="tableau['.$etudiant["id"].'][note]" value="'.$value[1].'" />
+                                                    '.$etudiant['id'].'</td><td>'.$etudiant['numero'].'</td><td>'.$etudiant['email'].'</td><td>'.$value[1].'</td></tr>';                     
+                                                }
+                                            }                    
+
+                                        }        
+                                        fclose($handle);
+                                        unlink($file);
+                                    }
+                                    echo '</table>';
+                                    echo '</div>';
+                                    echo '<button id="sendmail" type="submit" class="submit" name="sendMail">Envoyer les notes</button>';
+                                    echo '</form>';            
+                                }
+                            }
+                        }
+                    ?>
                 </div>
             </div>
         </div>
@@ -66,51 +127,7 @@ require 'vendor/autoload.php';
 
 <?php
 
-// if (empty($_FILES["file"]["name"]) || empty($_POST["matiere"]) || empty($_POST["bareme"])) {
-//     return false;
-// }
-
-if(isset($_POST["submit"])) {
-    if ( isset($_FILES["file"])) {
-        $file = $_FILES["file"]["name"];
-        $matiere = $_POST["matiere"];
-        $bareme = $_POST["bareme"];
-        move_uploaded_file($_FILES["file"]["tmp_name"],$file);
-        if (isset($file)) {
-            $row = 1;
-            $tab = array();
-            echo '<form method="post">';
-            echo '<input type="hidden" name="matiereValue" value="'.$matiere.'" />';            
-            echo '<input type="hidden" name="baremeValue" value="'.$bareme.'" />';            
-            echo '<button id="sendmail" type="submit" name="sendMail">Envoyer les notes</button>';
-            echo '<table border=1>';
-            echo '<thead><tr><th>ID</th><th>Numéro Etudiant</th><th>Adresse mail</th><th>Note</th></thead>';
-            if (($handle = fopen($file, "r")) !== FALSE) {
-                while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                    $num = count($data);
-                    $row++;
-                    for ($c=0; $c < $num; $c++) {
-                        $value = explode(";",$data[$c]);
-                    }              
-                    foreach($etudiants as $etudiant){
-                        if($etudiant['numero'] == $value[0]){ 
-                            echo '<tr><td>
-                            <input type="hidden" name="tableau['.$etudiant["id"].'][email]" value="'.$etudiant['email'].'" />
-                            <input type="hidden" name="tableau['.$etudiant["id"].'][note]" value="'.$value[1].'" />
-                            '.$etudiant['id'].'</td><td>'.$etudiant['numero'].'</td><td>'.$etudiant['email'].'</td><td>'.$value[1].'</td></tr>';                     
-                        }
-                    }                    
-
-                }        
-                fclose($handle);
-                unlink($file);
-            }
-            echo '</table>';
-            echo '</form>';            
-        }
-    }
-}
-
+// Send email
 if(isset($_POST["sendMail"])) {
     $matiere = $_POST["matiereValue"];
     $bareme = $_POST["baremeValue"];
