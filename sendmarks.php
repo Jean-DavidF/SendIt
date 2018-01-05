@@ -147,14 +147,14 @@ require 'vendor/autoload.php';
                                 $mail->Body = '<div style="max-width:550px; min-width:320px;  background-color: white; border: 1px solid #DDDDDD; margin-right: auto; margin-left: auto;">
                                                     <div style="margin-left:30px;margin-right:30px;">
                                                         <p>&nbsp;</p>
-                                                        <p style="font-family:Philosopher, serif;font-weight: bold; color: #000232;font-size: 15px;">LP-CréaWeb</p>
+                                                        <p style="font-family:Lato, serif;font-weight: bold; color: #000232;font-size: 15px;">LP-CréaWeb</p>
                                                         <hr style="margin-top:10px;margin-bottom:65px;border:none;border-bottom:1px solid #e71d73;" />
                                                         <h1 style="font-family: Philosopher, serif; font-weight: normal; color: #000232; text-align: center; margin-bottom: 65px;font-size: 20px; letter-spacing: 6px;font-weight: normal; border: 2px solid black; padding: 15px;">VOUS AVEZ UNE NOUVELLE NOTE !</h1>
-                                                        <h3 style="font-family:Lato, serif; font-style:italic;font-weight:500;">Note dans la matière <span style="border-bottom: 1px solid red;">' . $matiere . ' : ' . '</span></h3>
+                                                        <h3 style="font-family:Lato, serif;font-weight:500;">Note dans la matière <span style="border-bottom: 1px solid #e71d73;">' . $matiere . ' : ' . '</span></h3>
                                                         <p style="text-align:center;font-family:Lato, serif; font-size: 18px; margin-left: auto; margin-right: auto;;color: #000232;line-height:1.5;margin-bottom:75px;">'.$case["note"]. ' '.$bareme.'</p>
                                                         <p style="text-align:center;font-family:Lato, serif; font-size: 18px; margin-left: auto; margin-right: auto;;color: #000232;line-height:1.5;margin-bottom:75px;">Merci de ne pas répondre à ce mail</p>
                                                         <hr style="margin-top:10px;margin-top:75px;border:none;border-bottom:1px solid #e71d73;" />
-                                                        <p style="text-align:center;margin-bottom:15px;"><small style="text-align:center;font-family:Courier New, Courier, monospace;font-size:10px;color#000232;">Fait avec <span style="color:#e71d73;">&hearts;</span> à Lens</small></p>
+                                                        <p style="text-align:center;margin-bottom:15px;"><small style="text-align:center;font-family:Lato, serif;font-size:10px;color#000232;">Fait avec <span style="color:#e71d73;">&hearts;</span> à Lens</small></p>
                                                         <p>&nbsp;</p>
                                                     </div>
                                                 </div>';
