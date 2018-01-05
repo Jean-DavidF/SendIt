@@ -164,9 +164,6 @@ require 'vendor/autoload.php';
                                 } else {
                                     echo "<div class='msg m-success'><i class='fa fa-check'></i><p> Notes envoyées avec succès !</p></div>";
                                     echo "<div class='again'><a href='". $_SERVER["PHP_SELF"] . "'>Envoyer de nouvelles notes</a></div>";
-                                    // if (save_mail($mail)) {
-                                    //     echo "Message saved!";
-                                    // }
                                 }
                             }
                         }

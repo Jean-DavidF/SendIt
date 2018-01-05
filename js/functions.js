@@ -65,12 +65,7 @@ $(document).ready(function() {
 	        success: function(res) {
 	            alertWidget("#alerts" ,"L'étape 1 a été <strong>validée</strong> avec succès.", "success", 3000);
 	            $('#content-2').html($(res).find('#content-2').find('form'));
-
-	            // Display formData values
-	            for (var [key, value] of formData.entries()) { 
-				  console.log(key, value);
-				}
-
+	            
 	            containerTransition('.container', $form, "#progressbar li");
 	        },
 	        error: function(res){
@@ -109,11 +104,6 @@ $(document).ready(function() {
 	        success: function(res) {
 	            alertWidget("#alerts" ,"L'étape 2 a été <strong>validée</strong> avec succès.", "success", 3000);
 	            $('#content-3').html($(res).find('#content-3').children());
-
-	            // Display formData values
-	            for (var [key, value] of formData.entries()) { 
-					console.log(key, value);
-				}
 
 	            containerTransition('.container', $form, "#progressbar li");
 	        },
