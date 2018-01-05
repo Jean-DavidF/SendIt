@@ -15,7 +15,8 @@ require 'vendor/autoload.php';
 
     <!-- Style -->
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato|Philosopher:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Philosopher:400,400i,700,700i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Javascript -->
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -38,7 +39,7 @@ require 'vendor/autoload.php';
         </ul>
 
         <div class="wrapper">
-            <div class="container">
+            <div class="container 1" id="container-1">
                 <div class="header">
                     <h1>IUT de Lens</h1>
                     <p>Ajout des notes</p>
@@ -63,7 +64,7 @@ require 'vendor/autoload.php';
                 </div>
             </div>
 
-            <div class="container">
+            <div class="container" id="container-2">
                 <div class="header">
                     <h1>IUT de Lens</h1>
                     <p>Envoi des mails</p>
@@ -79,7 +80,7 @@ require 'vendor/autoload.php';
                                 if (isset($file)) {
                                     $row = 1;
                                     $tab = array();
-                                    echo '<form method="post">';
+                                    echo '<form method="post" id="form-sendmails">';
                                     echo '<input type="hidden" name="matiereValue" value="'.$matiere.'" />';            
                                     echo '<input type="hidden" name="baremeValue" value="'.$bareme.'" />';    
                                     echo '<div class="table-content">';     
@@ -115,6 +116,64 @@ require 'vendor/autoload.php';
                     ?>
                 </div>
             </div>
+
+            <div class="container" id="container-3">
+                <div class="header">
+                    <h1>IUT de Lens</h1>
+                    <p>Terminé</p>
+                </div>
+                <div class="content" id="content-3">
+                    <?php
+                        // Send email
+                        if(isset($_POST["matiereValue"]) && isset($_POST["baremeValue"])) {
+                            $matiere = $_POST["matiereValue"];
+                            $bareme = $_POST["baremeValue"];
+                            foreach($_POST["tableau"] as $case){
+                                $mail = new PHPMailer;
+                                $mail->CharSet = 'UTF-8';
+                                $mail->isSMTP();
+                                $mail->SMTPDebug = 0;
+                                $mail->Host = 'smtp.gmail.com';
+                                $mail->Port = 587;
+                                $mail->SMTPSecure = 'tls';
+                                $mail->SMTPAuth = true;
+                                $mail->isHTML();
+
+                                // Set email_account
+                                require 'email_account.php';
+
+                                $mail->addAddress($case["email"]);
+                                $mail->Subject = 'Nouvelle note dans la matière '. $matiere.'';
+                                $mail->Body = '<div style="max-width:550px; min-width:320px;  background-color: white; border: 1px solid #DDDDDD; margin-right: auto; margin-left: auto;">
+                                                    <div style="margin-left:30px;margin-right:30px;">
+                                                        <p>&nbsp;</p>
+                                                        <p style="font-family:Verdana, Geneva, sans-serif;font-weight: bold; color: #3D3D3D;font-size: 15px;">LP-CréaWeb</p>
+                                                        <hr style="margin-top:10px;margin-bottom:65px;border:none;border-bottom:1px solid red;" />
+                                                        <h1 style="font-family: Tahoma, Geneva, sans-serif; font-weight: normal; color: #2A2A2A; text-align: center; margin-bottom: 65px;font-size: 20px; letter-spacing: 6px;font-weight: normal; border: 2px solid black; padding: 15px;">VOUS AVEZ UNE NOUVELLE NOTE !</h1>
+                                                        <h3 style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-style:italic;font-weight:500;">Note dans la matière <span style="border-bottom: 1px solid red;">' . $matiere . ' : ' . '</span></h3>
+                                                        <p style="text-align:center;font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 18px; margin-left: auto; margin-right: auto;;color: #666;line-height:1.5;margin-bottom:75px;">'.$case["note"]. ' '.$bareme.'</p>
+                                                        <p style="text-align:center;font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 18px; margin-left: auto; margin-right: auto;;color: #666;line-height:1.5;margin-bottom:75px;">Merci de ne pas répondre à ce mail</p>
+                                                        <hr style="margin-top:10px;margin-top:75px;" />
+                                                        <p style="text-align:center;margin-bottom:15px;"><small style="text-align:center;font-family:Courier New, Courier, monospace;font-size:10px;color#666;">Fait avec <span style="color:red;">&hearts;</span> à Lens</small></p>
+                                                        <p>&nbsp;</p>
+                                                    </div>
+                                                </div>';
+                                $mail->AltBody = 'This is a plain-text message body';
+                                if (!$mail->send()) {
+                                    echo "<div class='msg m-error'><i class='fa fa-times'></i><p>Erreur Mailer : " . $mail->ErrorInfo . "</p></div>";
+                                } else {
+                                    echo "<div class='msg m-success'><i class='fa fa-check'></i><p> Notes envoyées avec succès !</p></div>";
+                                    echo "<div class='again'><a href='". $_SERVER["PHP_SELF"] . "'>Envoyer de nouvelles notes</a></div>";
+                                    // if (save_mail($mail)) {
+                                    //     echo "Message saved!";
+                                    // }
+                                }
+                            }
+                        }
+
+                        ?>
+                </div>
+            </div>
         </div>
 
         <div class="footer">
@@ -123,54 +182,3 @@ require 'vendor/autoload.php';
         </div>
     </body>
 </html>
-
-
-<?php
-
-// Send email
-if(isset($_POST["sendMail"])) {
-    $matiere = $_POST["matiereValue"];
-    $bareme = $_POST["baremeValue"];
-    foreach($_POST["tableau"] as $case){
-        $mail = new PHPMailer;
-        $mail->CharSet = 'UTF-8';
-        $mail->isSMTP();
-        $mail->SMTPDebug = 0;
-        $mail->Host = 'smtp.gmail.com';
-        $mail->Port = 587;
-        $mail->SMTPSecure = 'tls';
-        $mail->SMTPAuth = true;
-        $mail->isHTML();
-
-        // Set email_account
-        require 'email_account.php';
-
-        $mail->addAddress($case["email"]);
-        $mail->Subject = 'Nouvelle note dans la matière '. $matiere.'';
-        $mail->Body = '<div style="max-width:550px; min-width:320px;  background-color: white; border: 1px solid #DDDDDD; margin-right: auto; margin-left: auto;">
-                            <div style="margin-left:30px;margin-right:30px;">
-                                <p>&nbsp;</p>
-                                <p style="font-family:Verdana, Geneva, sans-serif;font-weight: bold; color: #3D3D3D;font-size: 15px;">LP-CréaWeb</p>
-                                <hr style="margin-top:10px;margin-bottom:65px;border:none;border-bottom:1px solid red;" />
-                                <h1 style="font-family: Tahoma, Geneva, sans-serif; font-weight: normal; color: #2A2A2A; text-align: center; margin-bottom: 65px;font-size: 20px; letter-spacing: 6px;font-weight: normal; border: 2px solid black; padding: 15px;">VOUS AVEZ UNE NOUVELLE NOTE !</h1>
-                                <h3 style="font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-style:italic;font-weight:500;">Note dans la matière <span style="border-bottom: 1px solid red;">' . $matiere . ' : ' . '</span></h3>
-                                <p style="text-align:center;font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 18px; margin-left: auto; margin-right: auto;;color: #666;line-height:1.5;margin-bottom:75px;">'.$case["note"]. ' '.$bareme.'</p>
-                                <p style="text-align:center;font-family:Palatino Linotype, Book Antiqua, Palatino, serif;font-size: 18px; margin-left: auto; margin-right: auto;;color: #666;line-height:1.5;margin-bottom:75px;">Merci de ne pas répondre à ce mail</p>
-                                <hr style="margin-top:10px;margin-top:75px;" />
-                                <p style="text-align:center;margin-bottom:15px;"><small style="text-align:center;font-family:Courier New, Courier, monospace;font-size:10px;color#666;">Fait avec <span style="color:red;">&hearts;</span> à Lens</small></p>
-                                <p>&nbsp;</p>
-                            </div>
-                        </div>';
-        $mail->AltBody = 'This is a plain-text message body';
-        if (!$mail->send()) {
-            echo "Erreur Mailer : " . $mail->ErrorInfo;
-        } else {
-            echo "Message envoyé !";
-            // if (save_mail($mail)) {
-            //     echo "Message saved!";
-            // }
-        }
-    }
-}
-
-?>
