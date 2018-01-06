@@ -129,7 +129,6 @@ body {
         background: white;
         padding: 15px;
         left: 50%;
-        padding-left: 0px;
         transform: translateX(-50%);
         width: 100%;
         text-align: center;
