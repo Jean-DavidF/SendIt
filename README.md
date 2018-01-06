@@ -1,7 +1,7 @@
 # SendMarks
 SendMarks application developped by <a href="https://github.com/ThomasLaigneau">Thomas Laigneau</a> and <a href="https://github.com/Jean-DavidF">Jean-David Flament</a>
 
-### Requirements
+## Requirements
 Create a "parameters.php" file at the project root with this content :
 
 ```php
@@ -36,6 +36,6 @@ Don't forget ! You need a database with you're students id's, students numbers a
 
 id | number | email
 ------------ | ------------- | -------------
-1 | 20183678 | johndoe@mail.com
+1 | 20183678 | foo@bar.com
 
-### Enjoy and send some marks !
+#### Enjoy and send some marks ! :+1:
