@@ -35,7 +35,7 @@ composer install
 Don't forget ! You need a database with you're students id's, students numbers and email adress, like this example :
 
 id | number | email
------------- | -------------
+------------ | ------------- | -------------
 1 | 20183678 | johndoe@mail.com
 
 Enjoy and send some marks !
