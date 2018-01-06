@@ -38,4 +38,4 @@ id | number | email
 ------------ | ------------- | -------------
 1 | 20183678 | johndoe@mail.com
 
-Enjoy and send some marks !
+# <p style="text-align: center;">Enjoy and send some marks !</p>
