@@ -57,12 +57,20 @@ $(document).ready(function() {
         	type: "POST",
 	        url: 'sendmarks.php',
 	        data: formData,
-			async: false,
 			cache: false,
 			enctype: 'multipart/form-data',
 			contentType: false,
 			processData: false,
+			beforeSend: function() {
+				$('.mark-button').hide();
+				$('.mark-button-load').show();
+			},
 	        success: function(res) {
+	        	setTimeout(function(){
+			  		$('.mark-button').hide();
+					$('.mark-button-submit').show();
+				}, 1000);
+
 	            alertWidget("#alerts" ,"L'étape 1 a été <strong>validée</strong> avec succès.", "success", 3000);
 	            $('#content-2').html($(res).find('#content-2').find('form'));
 	            
@@ -96,12 +104,20 @@ $(document).ready(function() {
         	type: "POST",
 	        url: 'sendmarks.php',
 	        data: formData,
-			async: false,
 			cache: false,
 			enctype: 'multipart/form-data',
 			contentType: false,
 			processData: false,
+			beforeSend: function() {
+				$('.mail-button').hide();
+				$('.mail-button-load').show();
+			},
 	        success: function(res) {
+	        	setTimeout(function(){
+			  		$('.mail-button').hide();
+					$('.mail-button-submit').show();
+				}, 1000);
+
 	            alertWidget("#alerts" ,"L'étape 2 a été <strong>validée</strong> avec succès.", "success", 3000);
 	            $('#content-3').html($(res).find('#content-3').children());
 

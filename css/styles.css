@@ -247,6 +247,12 @@ body {
     color: #e81e72;
 }
 
+.mark-button-load i, .mail-button-load i {
+    font-size: 18px;
+    position: relative;
+    top: 1px;
+}
+
 /************************ CONTENT ************************/
 
 #form-sendmarks {
@@ -488,9 +494,17 @@ label, input {
     cursor: pointer;
 }
 
+.mark-button-load, .mail-button-load {
+    padding: 15px 25px !important; 
+}
+
 @media screen and (max-width: 525px) {
     .content .submit {
         padding: 15px 25px;
+    }
+
+    .mark-button-load, .mail-button-load {
+        padding: 15px 17px !important;
     }
 }
 

@@ -59,7 +59,8 @@ require 'vendor/autoload.php';
                         <label for="bareme">Indiquez votre barême</label>
                         <input type="text" placeholder="Exemple : / 20" name="bareme">
                         <br />
-                        <input id="submit" class="submit" type="submit" value="Valider" name="submit">
+                        <input id="submit" class="submit mark-button mark-button-submit" type="submit" value="Valider" name="submit">
+                        <button style="display: none;" class="submit mark-button mark-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
                     </form>
                 </div>
             </div>
@@ -108,7 +109,8 @@ require 'vendor/autoload.php';
                                     }
                                     echo '</table>';
                                     echo '</div>';
-                                    echo '<button id="sendmail" type="submit" class="submit" name="sendMail">Envoyer les notes</button>';
+                                    echo '<button id="sendmail" type="submit" class="submit mail-button mail-button-submit" name="sendMail">Envoyer les notes</button>';
+                                    echo '<button style="display:none;" type="button" class="submit mail-button mail-button-load">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>';
                                     echo '</form>';            
                                 }
                             }
