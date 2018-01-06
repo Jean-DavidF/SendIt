@@ -1,7 +1,7 @@
 # SendMarks
 SendMarks application developped by <a href="https://github.com/ThomasLaigneau">Thomas Laigneau</a> and <a href="https://github.com/Jean-DavidF">Jean-David Flament</a>
 
-# Requirements
+### Requirements
 Create a "parameters.php" file at the project root with this content :
 
 ```php
@@ -31,5 +31,11 @@ Finally, go to your terminal, change your directory to the project folder and wr
 ```
 composer install
 ```
+
+Don't forget ! You need a database with you're students id's, students numbers and email adress, like this example :
+
+id | number | email
+------------ | -------------
+1 | 20183678 | johndoe@mail.com
 
 Enjoy and send some marks !
