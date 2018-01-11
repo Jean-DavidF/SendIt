@@ -179,6 +179,11 @@ body {
     top: -30px;
 }
 
+.msg.m-error {
+    font-size: 14px !important;
+    top: -5px !important;
+}
+
 @media screen and (max-width: 525px) {
     .msg {
         position: absolute;
