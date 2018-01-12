@@ -252,7 +252,7 @@ body {
     color: #e81e72;
 }
 
-.mark-button-load i, .mail-button-load i {
+.mark-button-load i, .text-button-load i, .mail-button-load i {
     font-size: 18px;
     position: relative;
     top: 1px;

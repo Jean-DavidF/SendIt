@@ -165,7 +165,7 @@ require 'vendor/autoload.php';
                                     echo "<div class='msg m-error'><i class='fa fa-times'></i><p>Erreur Mailer : " . $mail->ErrorInfo . "</p></div>";
                                 } else {
                                     echo "<div class='msg m-success'><i class='fa fa-check'></i><p> Notes envoyées avec succès !</p></div>";
-                                    echo "<div class='again'><a href='". $_SERVER["PHP_SELF"] . "'>Envoyer de nouvelles notes</a></div>";
+                                    echo "<div class='again'><a href='choice.php'>Retour à l'accueil</a></div>";
                                     echo "<div class='credits'>Développé avec <i class='fa fa-heart'></i> par <a href='http://thomaslaigneau.com/'>Thomas Laigneau</a> et <a href='https://github.com/Jean-DavidF'>Jean-David Flament</a></div>";
                                 }
                             }

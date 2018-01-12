@@ -60,10 +60,10 @@ require 'vendor/autoload.php';
                         <input type="text" placeholder="Exemple : Informations horaires" name="object">
                         <br />
                         <label for="message">Saisissez votre message</label>
-                        <textarea rows="5" placeholder="Exemple : Bonjour, ..." name="message"></textarea>
+                        <textarea id="mailMessage" rows="5" placeholder="Exemple : Bonjour, ..." name="message"></textarea>
                         <br />
                         <input id="submit" class="submit-text text-button text-button-submit" type="submit" value="Valider" name="submit">
-                        <button style="display: none;" class="submit text-button text-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
+                        <button style="display: none;" class="submit-text text-button text-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
                     </form>
                 </div>
             </div>
@@ -150,7 +150,7 @@ require 'vendor/autoload.php';
                                 require 'email_account.php';
 
                                 $mail->addAddress($case["email"]);
-                                $mail->Subject = '' . $name . 'Objet : '. $object . '';
+                                $mail->Subject = 'Objet : '. $object . '';
                                 $mail->Body = '<div style="max-width:550px; min-width:320px;  background-color: white; border: 1px solid #DDDDDD; margin-right: auto; margin-left: auto;">
                                                     <div style="margin-left:30px;margin-right:30px;">
                                                         <p>&nbsp;</p>
@@ -158,7 +158,7 @@ require 'vendor/autoload.php';
                                                         <hr style="margin-top:10px;margin-bottom:65px;border:none;border-bottom:1px solid #e71d73;" />
                                                         <h1 style="font-family: Philosopher, serif; font-weight: normal; color: #000232; text-align: center; margin-bottom: 65px;font-size: 20px; letter-spacing: 6px;font-weight: normal; border: 2px solid black; padding: 15px;">VOUS AVEZ UN NOUVEAU MESSAGE !</h1>
                                                         <h3 style="font-family:Lato, serif;font-weight:500;">Message reçu par : <span style="border-bottom: 1px solid #e71d73;">' . $name . ' : ' . '</span></h3>
-                                                        <p style="text-align:center;font-family:Lato, serif; font-size: 18px; margin-left: auto; margin-right: auto;;color: #000232;line-height:1.5;margin-bottom:75px;">'.$case["note"]. ' '.$bareme.'</p>
+                                                        <p style="text-align:center;font-family:Lato, serif; font-size: 18px; margin-left: auto; margin-right: auto;;color: #000232;line-height:1.5;margin-bottom:75px;">"'.$message.'"</p>
                                                         <p style="text-align:center;font-family:Lato, serif; font-size: 18px; margin-left: auto; margin-right: auto;;color: #000232;line-height:1.5;margin-bottom:75px;">Merci de ne pas répondre à ce mail</p>
                                                         <hr style="margin-top:10px;margin-top:75px;border:none;border-bottom:1px solid #e71d73;" />
                                                         <p style="text-align:center;margin-bottom:15px;"><small style="text-align:center;font-family:Lato, serif;font-size:10px;color#000232;">Fait avec <span style="color:#e71d73;">&hearts;</span> à Lens</small></p>
@@ -169,8 +169,8 @@ require 'vendor/autoload.php';
                                 if (!$mail->send()) {
                                     echo "<div class='msg m-error'><i class='fa fa-times'></i><p>Erreur Mailer : " . $mail->ErrorInfo . "</p></div>";
                                 } else {
-                                    echo "<div class='msg m-success'><i class='fa fa-check'></i><p> Notes envoyées avec succès !</p></div>";
-                                    echo "<div class='again'><a href='". $_SERVER["PHP_SELF"] . "'>Envoyer de nouvelles notes</a></div>";
+                                    echo "<div class='msg m-success'><i class='fa fa-check'></i><p> Messages envoyés avec succès !</p></div>";
+                                    echo "<div class='again'><a href='choice.php'>Retour à l'accueil</a></div>";
                                     echo "<div class='credits'>Développé avec <i class='fa fa-heart'></i> par <a href='http://thomaslaigneau.com/'>Thomas Laigneau</a> et <a href='https://github.com/Jean-DavidF'>Jean-David Flament</a></div>";
                                 }
                             }

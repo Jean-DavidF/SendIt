@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+	$(document).on('change', '#mailMessage', function(event) {
+		$(this).val().replace(/\r\n|\r|\n/g,"<br />");
+	});
+
 	// Alerts
 	function alertWidget(div, message, type, duration) {
 	    $(div).addClass('slide');
@@ -164,7 +168,7 @@ $(document).ready(function() {
 			processData: false,
 			beforeSend: function() {
 				$('.text-button').hide();
-				$('.text-button-load').show();
+				$('.text-button-load').css('display', 'block');
 			},
 	        success: function(res) {
 	        	setTimeout(function(){
@@ -192,7 +196,7 @@ $(document).ready(function() {
 
 		var $nameValue = $(this).find('input[name=nameValue]');
 		var $objectValue = $(this).find('input[name=objectValue]');
-		var $messageValue = $(this).find('textarea[name=messageValue]');
+		var $messageValue = $(this).find('input[name=messageValue]');
 
 		if (!$nameValue.val() || !$objectValue.val() || !$messageValue.val()) {
 			alertWidget("#alerts" ,"Le fichier CSV est incorrect. Merci de vérifier.", "error", 3000);
@@ -204,7 +208,7 @@ $(document).ready(function() {
 		
         $.ajax({
         	type: "POST",
-	        url: 'sendmarks.php',
+	        url: 'sendtext.php',
 	        data: formData,
 			cache: false,
 			enctype: 'multipart/form-data',
