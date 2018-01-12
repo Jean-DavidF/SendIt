@@ -47,7 +47,7 @@
                 </div>
                 <ul class="desc"> 
                     <li>Cette application permet d'envoyer des messages à vos élèves.</li>
-                    <li>Il vous suffit d'y télécharger un fichier CSV (n°étudiant), d'y indiquer votre nom, l'objet puis votre message.</li>
+                    <li>Il vous suffit d'y indiquer votre nom, l'objet puis votre message.</li>
                     <li>Une fois cela fait, il ne vous reste plus qu'à valider puis envoyer les emails.</li>
                 </ul>
             </li>
