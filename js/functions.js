@@ -11,6 +11,6 @@ $(document).ready(function() {
 	$(document).on('click', '.open-csv', function(event) {
 		event.preventDefault();
 
-		$('.list-csv').toggleClass('hide');
+		$('.list-csv').slideToggle(200);
 	});
 });
