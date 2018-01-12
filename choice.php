@@ -43,11 +43,11 @@
                     <div class="title"><i class="fa fa-comments"></i> Envoi de messages (SendText)</div>
                     <div class="dept">Plus d'infos <i class="fa fa-chevron-down"></i></div>
                     <!-- <div class="date">Disponible</div> -->
-                    <a href="sendmarks.php" class="refer">Choisir</a>
+                    <a href="sendtext.php" class="refer">Choisir</a>
                 </div>
                 <ul class="desc"> 
                     <li>Cette application permet d'envoyer des messages à vos élèves.</li>
-                    <li>Il vous suffit d'y télécharger un fichier CSV (n°étudiant), d'y indiquer votre nom, l'objet puis votre message.</li>
+                    <li>Il vous suffit d'y indiquer votre nom, l'objet puis votre message.</li>
                     <li>Une fois cela fait, il ne vous reste plus qu'à valider puis envoyer les emails.</li>
                 </ul>
             </li>
