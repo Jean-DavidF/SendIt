@@ -21,6 +21,7 @@ require 'vendor/autoload.php';
     <!-- Javascript -->
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/sendmarks.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
 
@@ -59,8 +60,8 @@ require 'vendor/autoload.php';
                         <label for="bareme">Indiquez votre barême</label>
                         <input type="text" placeholder="Exemple : / 20" name="bareme">
                         <br />
-                        <input id="submit" class="submit mark-button mark-button-submit" type="submit" value="Valider" name="submit">
-                        <button style="display: none;" class="submit mark-button mark-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
+                        <input id="submit" class="submit-mark mark-button mark-button-submit" type="submit" value="Valider" name="submit">
+                        <button style="display: none;" class="submit-mark mark-button mark-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
                     </form>
                 </div>
             </div>

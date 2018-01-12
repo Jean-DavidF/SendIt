@@ -1,0 +1,54 @@
+#form-sendtext {
+    text-align: center;
+}
+
+.text-button-load i {
+    font-size: 18px;
+    position: relative;
+    top: 1px;
+}
+
+.content .submit-text {
+    margin: 0px auto;
+    text-align: center;
+    padding: 15px 40px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: 'Lato', serif;
+    font-size: 14px;
+    background: #000232;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.text-button-load, .mail-button-load {
+    padding: 15px 25px !important; 
+}
+
+@media screen and (max-width: 525px) {
+    .content .submit-text {
+        padding: 15px 25px;
+    }
+
+    .text-button-load, .mail-button-load {
+        padding: 15px 17px !important;
+    }
+}
+
+.table-content {
+    margin-top: -10px;
+    max-height: 253px;
+    overflow: scroll;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 5px;
+}
+
+table.tabletext th:nth-child(2) {
+    width:60px;
+}
+
+table.tabletext th:last-child {
+    width: 120px;
+}

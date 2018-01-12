@@ -15,12 +15,14 @@ require 'vendor/autoload.php';
 
     <!-- Style -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/sendtext.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Philosopher:400,400i,700,700i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Javascript -->
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/sendtext.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
 
