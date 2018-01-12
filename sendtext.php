@@ -9,7 +9,7 @@ require 'vendor/autoload.php';
 <head>
     <meta charset="UTF-8">
 
-    <title>SendMarks</title>
+    <title>SendText</title>
 
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0">
 
@@ -33,7 +33,7 @@ require 'vendor/autoload.php';
         <div id="alerts"></div>
 
         <ul id="progressbar">
-            <li class="active">Ajout des notes</li>
+            <li class="active">Ajout de contact</li>
             <li>Envoi des mails</li>
             <li>Terminé</li>
         </ul>
@@ -41,33 +41,36 @@ require 'vendor/autoload.php';
         <div class="wrapper">
             <div class="container 1" id="container-1">
                 <div class="header">
-                    <h1>SendMarks</h1>
-                    <p>Ajout des notes</p>
+                    <h1>SendText</h1>
+                    <p>Ajout de contact</p>
                 </div>
-                <div class="content" id="content-1">
-                    <form id="form-sendmarks" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
-                        <label for="file">Insérez le fichier de note</label>
+                <div class="content content-text" id="content-1">
+                    <form id="form-sendtext" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
+                        <label for="file">Insérez le fichier de contacts</label>
                         <div class="input-form">
                             <div class="file-upload-wrapper" data-text="Sélectionnez votre fichier">
                                 <input name="file" id="file" type="file" class="file-upload-field" value="">
                             </div>
                         </div>
                         <br />
-                        <label for="matiere">Indiquez une matière</label>
-                        <input type="text" placeholder="Exemple : Algorithmique" name="matiere">
+                        <label for="name">Indiquez votre nom</label>
+                        <input type="text" placeholder="Exemple : M. Dupont" name="name">
                         <br />
-                        <label for="bareme">Indiquez votre barême</label>
-                        <input type="text" placeholder="Exemple : / 20" name="bareme">
+                        <label for="object">Indiquez l'objet du mail</label>
+                        <input type="text" placeholder="Exemple : Informations horaires" name="object">
                         <br />
-                        <input id="submit" class="submit mark-button mark-button-submit" type="submit" value="Valider" name="submit">
-                        <button style="display: none;" class="submit mark-button mark-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
+                        <label for="message">Saisissez votre message</label>
+                        <textarea rows="5" placeholder="Exemple : Bonjour, ..." name="message"></textarea>
+                        <br />
+                        <input id="submit" class="submit-text text-button text-button-submit" type="submit" value="Valider" name="submit">
+                        <button style="display: none;" class="submit text-button text-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
                     </form>
                 </div>
             </div>
 
             <div class="container" id="container-2">
                 <div class="header">
-                    <h1>SendMarks</h1>
+                    <h1>SendText</h1>
                     <p>Envoi des mails</p>
                 </div>
                 <div class="content" id="content-2">
@@ -75,18 +78,20 @@ require 'vendor/autoload.php';
                         if(isset($_POST)) {
                             if ( isset($_FILES["file"])) {
                                 $file = $_FILES["file"]["name"];
-                                $matiere = $_POST["matiere"];
-                                $bareme = $_POST["bareme"];
+                                $name = $_POST["name"];
+                                $object = $_POST["object"];
+                                $message = $_POST["message"];
                                 move_uploaded_file($_FILES["file"]["tmp_name"],$file);
                                 if (isset($file)) {
                                     $row = 1;
                                     $tab = array();
-                                    echo '<form method="post" id="form-sendmails">';
-                                    echo '<input type="hidden" name="matiereValue" value="'.$matiere.'" />';            
-                                    echo '<input type="hidden" name="baremeValue" value="'.$bareme.'" />';    
+                                    echo '<form method="post" id="form-sendtext-mails">';
+                                    echo '<input type="hidden" name="nameValue" value="'.$name.'" />';            
+                                    echo '<input type="hidden" name="objectValue" value="'.$object.'" />';  
+                                    echo '<input type="hidden" name="messageValue" value="'.$message.'" />';  
                                     echo '<div class="table-content">';     
-                                    echo '<table align="center">';
-                                    echo '<thead><tr><th>ID</th><th>N° Étudiant</th><th>Email</th><th>Note</th></thead>';
+                                    echo '<table class="tabletext" align="center">';
+                                    echo '<thead><tr><th>ID</th><th>N° Étudiant</th><th>Email</th></thead>';
                                     if (($handle = fopen($file, "r")) !== FALSE) {
                                         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                                             $num = count($data);
@@ -98,8 +103,7 @@ require 'vendor/autoload.php';
                                                 if($etudiant['numero'] == $value[0]){ 
                                                     echo '<tr><td>
                                                     <input type="hidden" name="tableau['.$etudiant["id"].'][email]" value="'.$etudiant['email'].'" />
-                                                    <input type="hidden" name="tableau['.$etudiant["id"].'][note]" value="'.$value[1].'" />
-                                                    '.$etudiant['id'].'</td><td>'.$etudiant['numero'].'</td><td>'.$etudiant['email'].'</td><td>'.$value[1].'</td></tr>';                     
+                                                    '.$etudiant['id'].'</td><td>'.$etudiant['numero'].'</td><td>'.$etudiant['email'].'</td></tr>';                     
                                                 }
                                             }                    
 
@@ -109,7 +113,7 @@ require 'vendor/autoload.php';
                                     }
                                     echo '</table>';
                                     echo '</div>';
-                                    echo '<button id="sendmail" type="submit" class="submit mail-button mail-button-submit" name="sendMail">Envoyer les notes</button>';
+                                    echo '<button id="sendmail" type="submit" class="submit mail-button mail-button-submit" name="sendMail">Envoyer les messages</button>';
                                     echo '<button style="display:none;" type="button" class="submit mail-button mail-button-load">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>';
                                     echo '</form>';            
                                 }
@@ -121,15 +125,16 @@ require 'vendor/autoload.php';
 
             <div class="container" id="container-3">
                 <div class="header">
-                    <h1>SendMarks</h1>
+                    <h1>SendText</h1>
                     <p>Terminé</p>
                 </div>
                 <div class="content" id="content-3">
                     <?php
                         // Send email
-                        if(isset($_POST["matiereValue"]) && isset($_POST["baremeValue"])) {
-                            $matiere = $_POST["matiereValue"];
-                            $bareme = $_POST["baremeValue"];
+                        if(isset($_POST["nameValue"]) && isset($_POST["objectValue"]) && isset($_POST["messageValue"])) {
+                            $name = $_POST["nameValue"];
+                            $object = $_POST["objectValue"];
+                            $message = $_POST["messageValue"];
                             foreach($_POST["tableau"] as $case){
                                 $mail = new PHPMailer;
                                 $mail->CharSet = 'UTF-8';
@@ -145,7 +150,7 @@ require 'vendor/autoload.php';
                                 require 'email_account.php';
 
                                 $mail->addAddress($case["email"]);
-                                $mail->Subject = 'Nouvelle note dans la matière '. $matiere.'';
+                                $mail->Subject = '' . $name . 'Objet : '. $object . '';
                                 $mail->Body = '<div style="max-width:550px; min-width:320px;  background-color: white; border: 1px solid #DDDDDD; margin-right: auto; margin-left: auto;">
                                                     <div style="margin-left:30px;margin-right:30px;">
                                                         <p>&nbsp;</p>
@@ -177,7 +182,7 @@ require 'vendor/autoload.php';
         </div>
 
         <div class="footer">
-            <p>SendMarks, IUT de Lens</p>
+            <p>SendTM, IUT de Lens</p>
             <a href="http://www.iut-lens.univ-artois.fr/"><img src="img/LOGO_IUT_LENS.jpg" alt="logo-iut-lens" /></a>
         </div>
     </body>

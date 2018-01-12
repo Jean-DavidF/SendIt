@@ -130,6 +130,108 @@ $(document).ready(function() {
 	    });
 	});
 
+	// Check errors of the first form and ajax
+	$(document).on('submit', '#form-sendtext', function(event) {
+		event.preventDefault();
+
+		var $form = $(this);
+
+		var $file = $(this).find('input[name=file]');
+		var $name = $(this).find('input[name=name]');
+		var $object = $(this).find('input[name=object]');
+		var $message = $(this).find('textarea[name=message]');
+
+		if (!$file.val() || !$name.val() || !$object.val() || !$message.val()) {
+			addError($file, 'input-error', '.file-upload-wrapper');
+			addError($name, 'input-error', null);
+			addError($object, 'input-error', null);
+			addError($message, 'input-error', null);
+
+			alertWidget("#alerts" ,"Merci de remplir la totalité des champs.", "error", 3000);
+
+			return false;
+		}
+
+		var formData = new FormData($form[0]);
+		
+        $.ajax({
+        	type: "POST",
+	        url: 'sendtext.php',
+	        data: formData,
+			cache: false,
+			enctype: 'multipart/form-data',
+			contentType: false,
+			processData: false,
+			beforeSend: function() {
+				$('.text-button').hide();
+				$('.text-button-load').show();
+			},
+	        success: function(res) {
+	        	setTimeout(function(){
+			  		$('.text-button').hide();
+					$('.text-button-submit').show();
+				}, 1000);
+
+	            alertWidget("#alerts" ,"L'étape 1 a été <strong>validée</strong> avec succès.", "success", 3000);
+	            $('#content-2').html($(res).find('#content-2').find('form'));
+	            
+	            containerTransition('.container', $form, "#progressbar li");
+	        },
+	        error: function(res){
+	        	console.log('Erreur :' + res);
+	            alertWidget("#alerts" ,"Merci de remplir la totalité des champs.", "error", 3000);
+	        },
+	    });
+	});
+
+	// Check errors of the second form and ajax
+	$(document).on('submit', '#form-sendtext-mails', function(event) {
+		event.preventDefault();
+
+		var $form = $(this);
+
+		var $nameValue = $(this).find('input[name=nameValue]');
+		var $objectValue = $(this).find('input[name=objectValue]');
+		var $messageValue = $(this).find('textarea[name=messageValue]');
+
+		if (!$nameValue.val() || !$objectValue.val() || !$messageValue.val()) {
+			alertWidget("#alerts" ,"Le fichier CSV est incorrect. Merci de vérifier.", "error", 3000);
+
+			return false;
+		}
+
+		var formData = new FormData($form[0]);
+		
+        $.ajax({
+        	type: "POST",
+	        url: 'sendmarks.php',
+	        data: formData,
+			cache: false,
+			enctype: 'multipart/form-data',
+			contentType: false,
+			processData: false,
+			beforeSend: function() {
+				$('.mail-button').hide();
+				$('.mail-button-load').show();
+			},
+	        success: function(res) {
+	        	setTimeout(function(){
+			  		$('.mail-button').hide();
+					$('.mail-button-submit').show();
+				}, 1000);
+
+	            alertWidget("#alerts" ,"L'étape 2 a été <strong>validée</strong> avec succès.", "success", 3000);
+	            $('#content-3').html($(res).find('#content-3').children());
+
+	            containerTransition('.container', $form, "#progressbar li");
+	        },
+	        error: function(res){
+	        	console.log('Erreur :' + res);
+	            alertWidget("#alerts" ,"Le fichier CSV est incorrect. Merci de vérifier.", "error", 3000);
+	        },
+	    });
+	});
+
 	// Step transitions
 	function containerTransition(container, form, progressBar) {
 		var currentContainer, nextContainer; // 2 containers
@@ -185,10 +287,7 @@ $(document).ready(function() {
 		});
 	}
 
-	$(document).on('click', '.refer', function(event) {
-		event.stopPropagation();
-	});
-
+	// Choice animation reveal 1
 	$('#pos_1').click(function() {
 		$(this).find('.desc').toggleClass('reveal');
 
@@ -197,6 +296,7 @@ $(document).ready(function() {
 		}
 	});
 
+	// Choice animation reveal 2
 	$('#pos_2').click(function() {
 		$(this).find('.desc').toggleClass('reveal');
 
