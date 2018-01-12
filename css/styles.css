@@ -138,6 +138,56 @@ body {
     }
 }
 
+/************************ GET CSV ***********************/
+
+.get-csv {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.get-csv .open-csv {
+    padding: 10px 18px 12px;
+    border: none;
+    font-size: 24px;
+    font-weight: 100;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    background: #e81e72;
+    color: #fff;
+    border-radius: 50%;
+    outline: none;
+    font-family: 'Lato', serif;
+}
+
+
+.get-csv .list-csv li a {
+    padding: 10px;
+    color: #000232;
+    display: block;
+}
+
+.get-csv .list-csv li a:hover {
+    background: #f1f1f1;
+    cursor: pointer;
+}
+
+.get-csv .list-csv {
+    position: absolute;
+    width: 200px;
+    background: #fcfcfc;
+    list-style: none;
+    padding-left: 0px;
+    left: -185px;
+    z-index: 999;
+    top: 40px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+}
+
+.hide {
+    display: none;
+}
+
 /************************ ALERTS ************************/
 
 #alerts {
