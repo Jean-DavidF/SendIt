@@ -156,8 +156,8 @@ require 'vendor/autoload.php';
                                                         <p>&nbsp;</p>
                                                         <p style="font-family:Lato, serif;font-weight: bold; color: #000232;font-size: 15px;">LP-CréaWeb</p>
                                                         <hr style="margin-top:10px;margin-bottom:65px;border:none;border-bottom:1px solid #e71d73;" />
-                                                        <h1 style="font-family: Philosopher, serif; font-weight: normal; color: #000232; text-align: center; margin-bottom: 65px;font-size: 20px; letter-spacing: 6px;font-weight: normal; border: 2px solid black; padding: 15px;">VOUS AVEZ UNE NOUVELLE NOTE !</h1>
-                                                        <h3 style="font-family:Lato, serif;font-weight:500;">Note dans la matière <span style="border-bottom: 1px solid #e71d73;">' . $matiere . ' : ' . '</span></h3>
+                                                        <h1 style="font-family: Philosopher, serif; font-weight: normal; color: #000232; text-align: center; margin-bottom: 65px;font-size: 20px; letter-spacing: 6px;font-weight: normal; border: 2px solid black; padding: 15px;">VOUS AVEZ UN NOUVEAU MESSAGE !</h1>
+                                                        <h3 style="font-family:Lato, serif;font-weight:500;">Message reçu par : <span style="border-bottom: 1px solid #e71d73;">' . $name . ' : ' . '</span></h3>
                                                         <p style="text-align:center;font-family:Lato, serif; font-size: 18px; margin-left: auto; margin-right: auto;;color: #000232;line-height:1.5;margin-bottom:75px;">'.$case["note"]. ' '.$bareme.'</p>
                                                         <p style="text-align:center;font-family:Lato, serif; font-size: 18px; margin-left: auto; margin-right: auto;;color: #000232;line-height:1.5;margin-bottom:75px;">Merci de ne pas répondre à ce mail</p>
                                                         <hr style="margin-top:10px;margin-top:75px;border:none;border-bottom:1px solid #e71d73;" />
@@ -182,7 +182,7 @@ require 'vendor/autoload.php';
         </div>
 
         <div class="footer">
-            <p>SendTM, IUT de Lens</p>
+            <p>SendIt, IUT de Lens</p>
             <a href="http://www.iut-lens.univ-artois.fr/"><img src="img/LOGO_IUT_LENS.jpg" alt="logo-iut-lens" /></a>
         </div>
     </body>

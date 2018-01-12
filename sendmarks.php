@@ -177,7 +177,7 @@ require 'vendor/autoload.php';
         </div>
 
         <div class="footer">
-            <p>SendMarks, IUT de Lens</p>
+            <p>SendIt, IUT de Lens</p>
             <a href="http://www.iut-lens.univ-artois.fr/"><img src="img/LOGO_IUT_LENS.jpg" alt="logo-iut-lens" /></a>
         </div>
     </body>

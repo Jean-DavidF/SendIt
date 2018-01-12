@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>SendMark</title>
+    <title>SendIt, IUT de Lens</title>
 
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0">
 
@@ -55,7 +55,7 @@
     </div>
 
     <div class="footer">
-        <p>SendMarks, IUT de Lens</p>
+        <p>SendIt, IUT de Lens</p>
         <a href="http://www.iut-lens.univ-artois.fr/"><img src="img/LOGO_IUT_LENS.jpg" alt="logo-iut-lens" /></a>
     </div>
 </body>
