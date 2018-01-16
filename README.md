@@ -1,4 +1,4 @@
-# SendMarks
+# SendIt
 SendMarks application developped by <a href="https://github.com/ThomasLaigneau">Thomas Laigneau</a> and <a href="https://github.com/Jean-DavidF">Jean-David Flament</a>
 
 ## Requirements
@@ -38,4 +38,4 @@ id | number | email
 ------------ | ------------- | -------------
 1 | 20183678 | foo@bar.com
 
-<h4 align="center">Enjoy and send some marks to your students ! :+1:</h4>
+<h4 align="center">Enjoy and send some marks or messages to your students ! :+1:</h4>
