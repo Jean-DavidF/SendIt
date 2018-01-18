@@ -50,7 +50,7 @@ require 'vendor/autoload.php';
         </div>
 
         <div class="wrapper">
-            <div class="container 1" id="container-1">
+            <div class="container" id="container-1">
                 <div class="header">
                     <h1>SendText</h1>
                     <p>Ajout de contact</p>
