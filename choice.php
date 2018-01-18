@@ -21,6 +21,17 @@
 
     <div id="alerts"></div>
 
+    <div class="get-csv">
+        <form action="list.php" method="POST">
+            <div class="open-csv"><i class="fa fa-list-ul"></i></div>
+            <ul class="list-csv hide">
+                <li><button type="submit" value="mmi_1" name="submit">MMI 1</button></li>
+                <li><button type="submit" value="mmi_2" name="submit">MMI 2</button></li>
+                <li><button type="submit" value="etudiant" name="submit">LP Créaweb</button></li>
+            </ul>
+        </form>
+    </div>
+
     <div class="container positions">
         <div class="header">
             <h1>Que souhaitez-vous faire ?</h1>

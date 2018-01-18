@@ -307,3 +307,62 @@ h1 {
         z-index: -1;
     }
 }
+
+/************************ LISTS ***********************/
+
+.get-csv {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.get-csv .open-csv {
+    padding: 16px;
+    border: none;
+    font-size: 22px;
+    font-weight: 100;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    background: #e81e72;
+    color: #fff;
+    border-radius: 50%;
+    outline: none;
+    position: relative;
+    z-index: 12;
+    font-family: 'Lato', serif;
+}
+
+
+.get-csv .list-csv li button {
+    padding: 10px;
+    font-family: 'Lato', serif;
+    color: #000232;
+    text-align: left;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: none;
+}
+
+.get-csv .list-csv li button:hover {
+    background: #f1f1f1;
+    cursor: pointer;
+}
+
+.get-csv .list-csv {
+    position: absolute;
+    width: 200px;
+    background: #fcfcfc;
+    list-style: none;
+    padding-left: 0px;
+    margin: 0;
+    left: -175px;
+    z-index: 11;
+    top: 25px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+}
+
+.hide {
+    display: none;
+}
