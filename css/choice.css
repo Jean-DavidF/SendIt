@@ -276,7 +276,7 @@ h1 {
 @media screen and (max-width: 525px) {
 	.positions {
 		width: 95%;
-    	top: 50px;
+    	top: 80px;
 	}
 
 	.positions .date, .positions .refer {
@@ -286,7 +286,6 @@ h1 {
 	    display: table;
 	    right: -15px;
 	    bottom: -45px;
-        z-index: 99;
 	}
 
 	.container {
