@@ -43,9 +43,9 @@ require 'vendor/autoload.php';
         <div class="get-csv">
             <button class="open-csv" type="button">+</button>
             <ul class="list-csv hide">
-                <li><a href="img/LOGO_IUT_LENS.jpg">LP Créaweb</a></li>
                 <li><a href="img/LOGO_IUT_LENS.jpg">MMI 1</a></li>
                 <li><a href="img/LOGO_IUT_LENS.jpg">MMI 2</a></li>
+                <li><a href="csv/lp_creaweb.csv" download>LP Créaweb</a></li>
             </ul>
         </div>
 
@@ -73,6 +73,13 @@ require 'vendor/autoload.php';
                         <label for="message">Saisissez votre message</label>
                         <textarea id="mailMessage" rows="5" placeholder="Exemple : Bonjour, ..." name="message"></textarea>
                         <br />
+                        <label for="attachment">Ajouter une ou plusieurs pièces jointes (optionnel)</label>                        
+                        <div class="input-form">
+                            <div class="file-upload-wrapper" data-text="Sélectionnez votre fichier">
+                                <input name="attachment" id="attachment" type="file" class="file-upload-field" value="">
+                            </div>
+                        </div>
+                        <br />                        
                         <input id="submit" class="submit-text text-button text-button-submit" type="submit" value="Valider" name="submit">
                         <button style="display: none;" class="submit-text text-button text-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
                     </form>

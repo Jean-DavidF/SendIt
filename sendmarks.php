@@ -43,9 +43,9 @@ require 'vendor/autoload.php';
         <div class="get-csv">
             <button class="open-csv" type="button">+</button>
             <ul class="list-csv hide">
-                <li><a href="img/LOGO_IUT_LENS.jpg">LP Créaweb</a></li>
                 <li><a href="img/LOGO_IUT_LENS.jpg">MMI 1</a></li>
                 <li><a href="img/LOGO_IUT_LENS.jpg">MMI 2</a></li>
+                <li><a href="csv/lp_creaweb.csv" download>LP Créaweb</a></li>                
             </ul>
         </div>
 
@@ -116,7 +116,12 @@ require 'vendor/autoload.php';
 
                                         }        
                                         fclose($handle);
-                                        unlink($file);
+                                        $date = date('d-m-Y');
+                                        $extension = ".csv";
+                                        $folder = dirname(__FILE__);                                        
+                                        $newName = $folder."/historic/envoi_note_".$matiere."_".$date.$extension;
+                                        rename($folder."/".$file, $newName);
+                                        // unlink($file);
                                     }
                                     echo '</table>';
                                     echo '</div>';
