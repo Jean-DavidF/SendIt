@@ -15,6 +15,7 @@ require 'vendor/autoload.php';
 
     <!-- Style -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dropdown.css">
     <link rel="stylesheet" href="css/sendmarks.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Philosopher:400,400i,700,700i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -40,9 +41,9 @@ require 'vendor/autoload.php';
             <li>Terminé</li>
         </ul>
 
-        <div class="get-csv">
-            <button class="open-csv" type="button">+</button>
-            <ul class="list-csv hide">
+        <div class="dropdown">
+            <button class="dropdown-open" type="button">+</button>
+            <ul class="dropdown-list hide">
                 <li><a href="img/LOGO_IUT_LENS.jpg">MMI 1</a></li>
                 <li><a href="img/LOGO_IUT_LENS.jpg">MMI 2</a></li>
                 <li><a href="csv/lp_creaweb.csv" download>LP Créaweb</a></li>                

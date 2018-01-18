@@ -8,9 +8,9 @@ $(document).ready(function() {
 		}
 	});
 
-	$(document).on('click', '.open-csv', function(event) {
+	$(document).on('click', '.dropdown-open', function(event) {
 		event.preventDefault();
 
-		$('.list-csv').slideToggle(200);
+		$(this).next().slideToggle(200);
 	});
 });

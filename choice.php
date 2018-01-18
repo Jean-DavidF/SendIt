@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0">
 
     <!-- Style -->
+    <link rel="stylesheet" href="css/dropdown.css">
     <link rel="stylesheet" href="css/choice.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Philosopher:400,400i,700,700i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,13 +22,13 @@
 
     <div id="alerts"></div>
 
-    <div class="get-csv">
+    <div class="dropdown">
         <form action="list.php" method="POST">
-            <div class="open-csv"><i class="fa fa-list-ul"></i></div>
-            <ul class="list-csv hide">
+            <div class="dropdown-open"><i class="fa fa-list-ul"></i></div>
+            <ul class="dropdown-list hide">
                 <li><button type="submit" value="mmi_1" name="submit">MMI 1</button></li>
                 <li><button type="submit" value="mmi_2" name="submit">MMI 2</button></li>
-                <li><button type="submit" value="etudiant" name="submit">LP Créaweb</button></li>
+                <li><button type="submit" value="lp_creaweb" name="submit">LP Créaweb</button></li>
             </ul>
         </form>
     </div>

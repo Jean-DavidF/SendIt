@@ -1,0 +1,63 @@
+/************************ Dropdown ***********************/
+
+@media screen and (max-height: 700px), screen and (max-width: 525px) {
+    .dropdown {
+        top: 12px !important;
+        right: 25px !important;
+    }
+
+    .dropdown .dropdown-open {
+        padding: 5px 14px 8px !important;
+    }
+}
+
+.dropdown {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.dropdown .dropdown-open {
+    padding: 10px 18px 12px;
+    border: none;
+    font-size: 24px;
+    font-weight: 100;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    background: #e81e72;
+    color: #fff;
+    border-radius: 50%;
+    outline: none;
+    font-family: 'Lato', serif;
+    position: relative;
+    z-index: 12;
+}
+
+
+.dropdown .dropdown-list li a {
+    padding: 10px;
+    color: #000232;
+    display: block;
+}
+
+.dropdown .dropdown-list li a:hover {
+    background: #f1f1f1;
+    cursor: pointer;
+}
+
+.dropdown .dropdown-list {
+    position: absolute;
+    width: 200px;
+    background: #fcfcfc;
+    list-style: none;
+    padding-left: 0px;
+    margin: 0;
+    left: -175px;
+    z-index: 11;
+    top: 25px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+}
+
+.hide {
+    display: none;
+}
