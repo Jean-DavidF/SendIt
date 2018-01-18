@@ -317,6 +317,10 @@ body {
 
 /************************ CONTENT ************************/
 
+form {
+    margin: 0px;
+}
+
 .input-error {
     border: 1px solid #ed3b4a !important;
 }
@@ -535,7 +539,6 @@ label, input {
     font-size: 14px;
     outline: none;
     transition: box-shadow 100ms ease-in;
-    margin-bottom: 35px;
     resize: none;
 }
 
@@ -555,6 +558,10 @@ label, input {
     color: #999;
     font-family: 'Lato', serif;
     font-size: 14px;
+}
+
+.content input[name=attachment] {
+    margin-bottom: 35px;
 }
 
 /************************ TABLE RECAP ************************/

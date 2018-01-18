@@ -59,7 +59,7 @@ require 'vendor/autoload.php';
                     <form id="form-sendtext" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" enctype="multipart/form-data">
                         <label for="file">Insérez le fichier de contacts</label>
                         <div class="input-form">
-                            <div class="file-upload-wrapper" data-text="Sélectionnez votre fichier">
+                            <div class="file-upload-wrapper file-upload-block" data-text="Sélectionnez votre fichier">
                                 <input name="file" id="file" type="file" class="file-upload-field" value="">
                             </div>
                         </div>
@@ -73,9 +73,10 @@ require 'vendor/autoload.php';
                         <label for="message">Saisissez votre message</label>
                         <textarea id="mailMessage" rows="5" placeholder="Exemple : Bonjour, ..." name="message"></textarea>
                         <br />
+                        <br />
                         <label for="attachment">Ajouter une ou plusieurs pièces jointes (optionnel)</label>                        
                         <div class="input-form">
-                            <div class="file-upload-wrapper" data-text="Sélectionnez votre fichier">
+                            <div class="file-upload-wrapper attachment-upload-block" data-text="Sélectionnez votre fichier">
                                 <input name="attachment" id="attachment" type="file" class="file-upload-field" value="">
                             </div>
                         </div>
