@@ -1,0 +1,19 @@
+.table-content {
+    margin-top: -10px;
+    max-height: 325px;
+    overflow: scroll;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 5px;
+}
+
+table th:first-child {
+    width: 40px;
+}
+
+table th:nth-child(2) {
+    width:60px;
+}
+
+table th:last-child {
+    width: 120px;
+}
