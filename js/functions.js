@@ -9,8 +9,32 @@ $(document).ready(function() {
 	});
 
 	$(document).on('click', '.dropdown-open', function(event) {
+
+		$(".dropdown-list").slideUp(200);
+		event.stopPropagation();
 		event.preventDefault();
 
-		$(this).next().slideToggle(200);
+		if ($(this).next().css('display') !== 'block') {
+			$(this).next().slideToggle(200);
+		}
+		
+	});
+
+	$(document).on('click', '.refer', function(event) {
+		$(".dropdown-list").slideUp(200);
+		event.stopPropagation();
+		event.preventDefault();
+
+		if ($(this).next().css('display') !== 'block') {
+			$(this).next().slideToggle(200);
+		}
+	});
+
+	$(document).click(function(){
+	  $(".dropdown-list").slideUp(200);
+	});
+
+	$(document).on('click', '.dropdown-list', function(event) {
+		event.stopPropagation();
 	});
 });

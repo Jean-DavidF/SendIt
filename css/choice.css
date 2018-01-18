@@ -139,7 +139,6 @@ h1 {
 
 .positions .pos-card {
 	border-bottom: 1px solid #eee;
-	cursor: pointer;
 	padding: 25px;
 	background: #fcfcfc;
 	-ms-flex-preferred-size: 100%;
@@ -190,6 +189,8 @@ h1 {
 .positions .dept {
 	color: #777;
 	font-size: .8rem;
+	cursor: pointer;
+	display: inline-block;
 }
 
 .positions .dept i {

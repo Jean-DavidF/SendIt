@@ -1,7 +1,9 @@
 $(document).ready(function() {
 	// Choice animation reveal 1
-	$('#pos_1').click(function() {
-		$(this).find('.desc').toggleClass('reveal');
+	$('#dept_1').click(function() {
+		var $li = $(this).closest('li');
+
+		$li.find('.desc').toggleClass('reveal');
 
 		if ($('#pos_2').find('.desc').hasClass('reveal')) {
 			$('#pos_2').find('.desc').removeClass('reveal');
@@ -9,8 +11,10 @@ $(document).ready(function() {
 	});
 
 	// Choice animation reveal 2
-	$('#pos_2').click(function() {
-		$(this).find('.desc').toggleClass('reveal');
+	$('#dept_2').click(function() {
+		var $li = $(this).closest('li');
+
+		$li.find('.desc').toggleClass('reveal');
 
 		if ($('#pos_1').find('.desc').hasClass('reveal')) {
 			$('#pos_1').find('.desc').removeClass('reveal');
