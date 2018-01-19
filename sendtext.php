@@ -14,9 +14,9 @@ require 'vendor/autoload.php';
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0">
 
     <!-- Style -->
+    <link rel="stylesheet" href="css/sendtext.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/dropdown.css">
-    <link rel="stylesheet" href="css/sendtext.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Philosopher:400,400i,700,700i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -81,7 +81,8 @@ require 'vendor/autoload.php';
                                 <input name="attachment" id="attachment" type="file" class="file-upload-field" value="">
                             </div>
                         </div>
-                        <br />                        
+                        <br />
+                        <input type="hidden" value="<?php echo $_POST['submit']; ?>" name="students" />                        
                         <input id="submit" class="submit-text text-button text-button-submit" type="submit" value="Valider" name="submit">
                         <button style="display: none;" class="submit-text text-button text-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
                     </form>
@@ -101,6 +102,10 @@ require 'vendor/autoload.php';
                                 $name = $_POST["name"];
                                 $object = $_POST["object"];
                                 $message = $_POST["message"];
+                                $sql = "SELECT * FROM " . $_POST['students'];
+                                $query = $db->prepare( $sql );
+                                $query->execute(); 
+                                $etudiants = $query->fetchAll( PDO::FETCH_ASSOC );
                                 move_uploaded_file($_FILES["file"]["tmp_name"],$file);
                                 if (isset($file)) {
                                     $row = 1;

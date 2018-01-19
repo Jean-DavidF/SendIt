@@ -14,9 +14,9 @@ require 'vendor/autoload.php';
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0">
 
     <!-- Style -->
+    <link rel="stylesheet" href="css/sendmarks.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/dropdown.css">
-    <link rel="stylesheet" href="css/sendmarks.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato|Philosopher:400,400i,700,700i">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -71,6 +71,7 @@ require 'vendor/autoload.php';
                         <label for="bareme">Indiquez votre barême</label>
                         <input type="text" placeholder="Exemple : / 20" name="bareme">
                         <br />
+                        <input type="hidden" value="<?php echo $_POST['submit']; ?>" name="students" />
                         <input id="submit" class="submit-mark mark-button mark-button-submit" type="submit" value="Valider" name="submit">
                         <button style="display: none;" class="submit-mark mark-button mark-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
                     </form>
@@ -89,6 +90,10 @@ require 'vendor/autoload.php';
                                 $file = $_FILES["file"]["name"];
                                 $matiere = $_POST["matiere"];
                                 $bareme = $_POST["bareme"];
+                                $sql = "SELECT * FROM " . $_POST['students'];
+                                $query = $db->prepare( $sql );
+                                $query->execute(); 
+                                $etudiants = $query->fetchAll( PDO::FETCH_ASSOC );
                                 move_uploaded_file($_FILES["file"]["tmp_name"],$file);
                                 if (isset($file)) {
                                     $row = 1;

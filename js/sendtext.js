@@ -23,14 +23,12 @@ $(document).ready(function() {
 		var $name = $(this).find('input[name=name]');
 		var $object = $(this).find('input[name=object]');
 		var $message = $(this).find('textarea[name=message]');
-		var $attachment = $(this).find('input[name=attachment]');
 
-		if (!$file.val() || !$name.val() || !$object.val() || !$message.val() || !$attachment.val()) {
+		if (!$file.val() || !$name.val() || !$object.val() || !$message.val()) {
 			addError($file, 'input-error', '.file-upload-block');
 			addError($name, 'input-error', null);
 			addError($object, 'input-error', null);
 			addError($message, 'input-error', null);
-			addError($attachment, 'input-error', '.attachment-upload-block');
 
 			alertWidget("#alerts" ,"Merci de remplir la totalité des champs.", "error", 3000);
 
