@@ -98,42 +98,55 @@ require 'vendor/autoload.php';
                                 if (isset($file)) {
                                     $row = 1;
                                     $tab = array();
-                                    echo '<form method="post" id="form-sendmails">';
-                                    echo '<input type="hidden" name="matiereValue" value="'.$matiere.'" />';            
-                                    echo '<input type="hidden" name="baremeValue" value="'.$bareme.'" />';    
-                                    echo '<div class="table-content">';     
-                                    echo '<table align="center">';
-                                    echo '<thead><tr><th>ID</th><th>N° Étudiant</th><th>Email</th><th>Note</th></thead>';
-                                    if (($handle = fopen($file, "r")) !== FALSE) {
-                                        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                                            $num = count($data);
-                                            $row++;
-                                            for ($c=0; $c < $num; $c++) {
-                                                $value = explode(";",$data[$c]);
-                                            }              
-                                            foreach($etudiants as $etudiant){
-                                                if($etudiant['numero'] == $value[0]){ 
-                                                    echo '<tr><td>
-                                                    <input type="hidden" name="tableau['.$etudiant["id"].'][email]" value="'.$etudiant['email'].'" />
-                                                    <input type="hidden" name="tableau['.$etudiant["id"].'][note]" value="'.$value[1].'" />
-                                                    '.$etudiant['id'].'</td><td>'.$etudiant['numero'].'</td><td>'.$etudiant['email'].'</td><td>'.$value[1].'</td></tr>';                     
-                                                }
-                                            }                    
+                                    ?>
+                                    <form method="post" id="form-sendmails">
+                                        <input type="hidden" name="matiereValue" value="<?php echo $matiere; ?>" />           
+                                        <input type="hidden" name="baremeValue" value="<?php  echo $bareme; ?>" />  
+                                        <div class="table-content">   
+                                            <table align="center">
+                                                <thead><tr><th>ID</th><th>N° Étudiant</th><th>Email</th><th>Note</th></thead>
+                                                    <?php
+                                                    if (($handle = fopen($file, "r")) !== FALSE) {
+                                                        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                                                            $num = count($data);
+                                                            $row++;
+                                                            for ($c=0; $c < $num; $c++) {
+                                                                $value = explode(";",$data[$c]);
+                                                            }              
+                                                            foreach($etudiants as $etudiant){
+                                                                if($etudiant['numero'] == $value[0]){
+                                                                    ?>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <?php echo '
+                                                                                    <input type="hidden" name="tableau['.$etudiant["id"].'][email]" value="'.$etudiant['email'].'" />
+                                                                                    <input type="hidden" name="tableau['.$etudiant["id"].'][note]" value="'.$value[1].'" />';
+                                                                                    echo $etudiant['id'];
+                                                                            ?>
+                                                                        </td>
+                                                                        <td><?php echo $etudiant['numero']; ?></td>
+                                                                        <td><?php echo $etudiant['email']; ?></td>
+                                                                        <td><?php echo $value[1]; ?></td>
+                                                                    </tr>
+                                                                    <?php               
+                                                                }
+                                                            }                    
 
-                                        }        
-                                        fclose($handle);
-                                        $date = date('d-m-Y');
-                                        $extension = ".csv";
-                                        $folder = dirname(__FILE__);                                        
-                                        $newName = $folder."/historic/envoi_note_".$matiere."_".$date.$extension;
-                                        rename($folder."/".$file, $newName);
-                                        // unlink($file);
-                                    }
-                                    echo '</table>';
-                                    echo '</div>';
-                                    echo '<button id="sendmail" type="submit" class="submit mail-button mail-button-submit" name="sendMail">Envoyer les notes</button>';
-                                    echo '<button style="display:none;" type="button" class="submit mail-button mail-button-load">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>';
-                                    echo '</form>';            
+                                                        }        
+                                                fclose($handle);
+                                                $date = date('d-m-Y-H-i-s');
+                                                $extension = ".csv";
+                                                $folder = dirname(__FILE__);                                        
+                                                $newName = $folder."/historic/envoi_note_".$matiere."_".$date.$extension;
+                                                rename($folder."/".$file, $newName);
+                                            } ?>
+                                            
+                                            </table>
+                                        </div>
+                                        <button id="sendmail" type="submit" class="submit mail-button mail-button-submit" name="sendMail">Envoyer les notes</button>
+                                        <button style="display:none;" type="button" class="submit mail-button mail-button-load">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
+                                    </form> 
+                                    <?php          
                                 }
                             }
                         }
