@@ -1,3 +1,5 @@
 email_account.php
 parameters.php
 vendor/*
+historic/*
+.DS_Store
