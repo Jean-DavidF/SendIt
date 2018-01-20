@@ -22,6 +22,12 @@
 <?php
     // Set parameters
     require 'parameters.php';
+
+    $mapping = [
+        'mmi_1' => 'MMI 1',
+        'mmi_2' => 'MMI 2',
+        'lp_creaweb' => 'LP Créaweb'
+    ];
 ?>
 
 <body>
@@ -29,7 +35,7 @@
     <div class="container">
         <div class="header">
             <h1>List</h1>
-            <p>Liste des étudiants de LPCréaWeb</p>
+            <p>Liste des étudiants de <?= $mapping[$_POST['students']] ? $mapping[$_POST['students']] : $_POST['students']; ?></p>
         </div>
         <div class="content">
             <div class="table-content">
