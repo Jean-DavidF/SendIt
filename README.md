@@ -9,7 +9,13 @@ Create a "parameters.php" file at the project root with this content :
 	$user = "{Your username database}";
 	$pass = "{Your password database}";
 	$db = new PDO( 'mysql:host={Your database host};dbname={Your database name}', $user, $pass );
-	$sql = "SELECT * FROM etudiant";
+
+	if (isset($_POST['students'])) {
+		$sql = "SELECT * FROM " . $_POST['students'];
+	} else {
+		header('Location: choice.php');
+	}
+
 	$query = $db->prepare( $sql );
 	$query->execute(); 
 	$etudiants = $query->fetchAll( PDO::FETCH_ASSOC );
