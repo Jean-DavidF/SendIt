@@ -6,6 +6,11 @@
         right: 25px !important;
     }
 
+    .dpw-send {
+        position: fixed !important;
+        z-index: 99;
+    }
+
     .dropdown .dropdown-open {
         padding: 5px 14px 8px !important;
     }

@@ -41,7 +41,7 @@ require 'vendor/autoload.php';
             <li>Terminé</li>
         </ul>
 
-        <div class="dropdown">
+        <div class="dropdown dpw-send">
             <button class="dropdown-open" type="button">+</button>
             <ul class="dropdown-list hide">
                 <li><a href="img/LOGO_IUT_LENS.jpg">MMI 1</a></li>
