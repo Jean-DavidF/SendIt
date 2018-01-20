@@ -26,9 +26,9 @@
         <form action="list.php" method="POST">
             <div class="dropdown-open"><i class="fa fa-list-ul"></i></div>
             <ul class="dropdown-list hide">
-                <li><button type="submit" value="mmi_1" name="submit">MMI 1</button></li>
-                <li><button type="submit" value="mmi_2" name="submit">MMI 2</button></li>
-                <li><button type="submit" value="lp_creaweb" name="submit">LP Créaweb</button></li>
+                <li><button type="submit" value="mmi_1" name="students">MMI 1</button></li>
+                <li><button type="submit" value="mmi_2" name="students">MMI 2</button></li>
+                <li><button type="submit" value="lp_creaweb" name="students">LP Créaweb</button></li>
             </ul>
         </form>
     </div>
@@ -47,9 +47,9 @@
                         <form action="sendmarks.php" method="POST">
                             <div class="refer">Choisir</i></div>
                             <ul class="dropdown-list hide">
-                                <li><button type="submit" value="mmi_1" name="submit">MMI 1</button></li>
-                                <li><button type="submit" value="mmi_2" name="submit">MMI 2</button></li>
-                                <li><button type="submit" value="lp_creaweb" name="submit">LP Créaweb</button></li>
+                                <li><button type="submit" value="mmi_1" name="students">MMI 1</button></li>
+                                <li><button type="submit" value="mmi_2" name="students">MMI 2</button></li>
+                                <li><button type="submit" value="lp_creaweb" name="students">LP Créaweb</button></li>
                             </ul>
                         </form>
                     </div>
@@ -69,9 +69,9 @@
                         <form action="sendtext.php" method="POST">
                             <div class="refer">Choisir</i></div>
                             <ul class="dropdown-list hide">
-                                <li><button type="submit" value="mmi_1" name="submit">MMI 1</button></li>
-                                <li><button type="submit" value="mmi_2" name="submit">MMI 2</button></li>
-                                <li><button type="submit" value="lp_creaweb" name="submit">LP Créaweb</button></li>
+                                <li><button type="submit" value="mmi_1" name="students">MMI 1</button></li>
+                                <li><button type="submit" value="mmi_2" name="students">MMI 2</button></li>
+                                <li><button type="submit" value="lp_creaweb" name="students">LP Créaweb</button></li>
                             </ul>
                         </form>
                     </div>

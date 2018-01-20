@@ -82,8 +82,8 @@ require 'vendor/autoload.php';
                             </div>
                         </div>
                         <br />
-                        <input type="hidden" value="<?php echo $_POST['submit']; ?>" name="students" />                        
-                        <input id="submit" class="submit-text text-button text-button-submit" type="submit" value="Valider" name="submit">
+                        <input type="hidden" value="<?php echo $_POST['students']; ?>" name="students" />                        
+                        <button id="submit" class="submit-text text-button text-button-submit" type="submit" value="Valider" name="submit">Valider</button>
                         <button style="display: none;" class="submit-text text-button text-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
                     </form>
                 </div>
@@ -114,6 +114,7 @@ require 'vendor/autoload.php';
                                     echo '<input type="hidden" name="nameValue" value="'.$name.'" />';            
                                     echo '<input type="hidden" name="objectValue" value="'.$object.'" />';  
                                     echo '<input type="hidden" name="messageValue" value="'.$message.'" />';  
+                                    echo '<input type="hidden" name="students" value="'.$_POST['students'].'" />';
                                     echo '<div class="table-content">';     
                                     echo '<table class="tabletext" align="center">';
                                     echo '<thead><tr><th>ID</th><th>N° Étudiant</th><th>Email</th></thead>';

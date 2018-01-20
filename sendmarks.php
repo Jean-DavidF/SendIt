@@ -71,8 +71,8 @@ require 'vendor/autoload.php';
                         <label for="bareme">Indiquez votre barême</label>
                         <input type="text" placeholder="Exemple : / 20" name="bareme">
                         <br />
-                        <input type="hidden" value="<?php echo $_POST['submit']; ?>" name="students" />
-                        <input id="submit" class="submit-mark mark-button mark-button-submit" type="submit" value="Valider" name="submit">
+                        <input type="hidden" value="<?php echo $_POST['students']; ?>" name="students" />
+                        <button id="submit" class="submit-mark mark-button mark-button-submit" type="submit" value="Valider" name="submit">Valider</button>
                         <button style="display: none;" class="submit-mark mark-button mark-button-load" type="button">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
                     </form>
                 </div>
@@ -121,6 +121,7 @@ require 'vendor/autoload.php';
                                                                             <?php echo '
                                                                                     <input type="hidden" name="tableau['.$etudiant["id"].'][email]" value="'.$etudiant['email'].'" />
                                                                                     <input type="hidden" name="tableau['.$etudiant["id"].'][note]" value="'.$value[1].'" />';
+                                                                                    echo '<input type="hidden" name="students" value="'. $_POST['students'] .'" />';
                                                                                     echo $etudiant['id'];
                                                                             ?>
                                                                         </td>
