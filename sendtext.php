@@ -99,9 +99,14 @@ require 'vendor/autoload.php';
                         if(isset($_POST)) {
                             if ( isset($_FILES["file"])) {
                                 $file = $_FILES["file"]["name"];
+                                echo $file;
                                 $name = $_POST["name"];
                                 $object = $_POST["object"];
                                 $message = $_POST["message"];
+                                if ( isset($_FILES["attachment"])) {
+                                    $attachment = $_FILES["attachment"]["name"];
+                                    move_uploaded_file($_FILES["attachment"]["tmp_name"],$attachment);
+                                }
                                 $sql = "SELECT * FROM " . $_POST['students'];
                                 $query = $db->prepare( $sql );
                                 $query->execute(); 
@@ -115,6 +120,7 @@ require 'vendor/autoload.php';
                                     echo '<input type="hidden" name="objectValue" value="'.$object.'" />';  
                                     echo '<input type="hidden" name="messageValue" value="'.$message.'" />';  
                                     echo '<input type="hidden" name="students" value="'.$_POST['students'].'" />';
+                                    echo '<input type="hidden" name="attachment" value="'.$attachment.'" />';
                                     echo '<div class="table-content">';     
                                     echo '<table class="tabletext" align="center">';
                                     echo '<thead><tr><th>ID</th><th>N° Étudiant</th><th>Email</th></thead>';
@@ -192,6 +198,7 @@ require 'vendor/autoload.php';
                                                     </div>
                                                 </div>';
                                 $mail->AltBody = 'This is a plain-text message body';
+                                $mail->addAttachment($_POST["attachment"]);
                                 if (!$mail->send()) {
                                     echo "<div class='msg m-error'><i class='fa fa-times'></i><p>Erreur Mailer : " . $mail->ErrorInfo . "</p></div>";
                                 } else {
@@ -199,6 +206,7 @@ require 'vendor/autoload.php';
                                     echo "<div class='again'><a href='choice.php'>Retour à l'accueil</a></div>";
                                     echo "<div class='credits'>Développé avec <i class='fa fa-heart'></i> par <a href='http://thomaslaigneau.com/'>Thomas Laigneau</a> et <a href='https://github.com/Jean-DavidF'>Jean-David Flament</a></div>";
                                 }
+                                unlink($_POST["attachment"]);                                                                        
                             }
                         }
 
