@@ -56,7 +56,7 @@ $(document).ready(function() {
 				}, 1000);
 
 	            alertWidget("#alerts" ,"L'étape 1 a été <strong>validée</strong> avec succès.", "success", 3000);
-	            $('#content-2').html($(res).find('#content-2').find('form'));
+	            $('#content-2').html($(res).find('#content-2'));
 	            
 	            containerTransition('.container', $form, "#progressbar li");
 	        },
