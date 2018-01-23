@@ -2,7 +2,8 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
-
+// Set parameters
+require 'parameters.php';
 ?>
 
 <html>
@@ -26,13 +27,7 @@ require 'vendor/autoload.php';
     <script type="text/javascript" src="js/sendmarks.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
 </head>
-
-<?php
-    // Set parameters
-    require 'parameters.php';
-?>
     <body>
-
         <div id="alerts"></div>
 
         <ul id="progressbar">
