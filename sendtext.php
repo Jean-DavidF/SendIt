@@ -116,42 +116,48 @@ require 'parameters.php';
                                 if (isset($file)) {
                                     $row = 1;
                                     $tab = array();
-                                    echo '<form method="post" id="form-sendtext-mails">';
-                                    echo '<input type="hidden" name="nameValue" value="'.$name.'" />';            
-                                    echo '<input type="hidden" name="objectValue" value="'.$object.'" />';  
-                                    echo '<input type="hidden" name="messageValue" value="'.$message.'" />';  
-                                    echo '<input type="hidden" name="students" value="'.$_POST['students'].'" />';
-                                    for ($i = 0; $i <= count($attachments)-1; $i++) {
-                                        echo '<input type="hidden" name="attachment' . $i . '" value="'.$attachments[$i].'" />';
-                                    }
-                                    echo '<input type="hidden" name="attachmentsLength" value="'. count($attachments) .'" />';
-                                    echo '<div class="table-content">';     
-                                    echo '<table class="tabletext" align="center">';
-                                    echo '<thead><tr><th>ID</th><th>N° Étudiant</th><th>Email</th></thead>';
-                                    if (($handle = fopen($file, "r")) !== FALSE) {
-                                        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                                            $num = count($data);
-                                            $row++;
-                                            for ($c=0; $c < $num; $c++) {
-                                                $value = explode(";",$data[$c]);
-                                            }              
-                                            foreach($etudiants as $etudiant){
-                                                if($etudiant['numero'] == $value[0]){ 
-                                                    echo '<tr><td>
-                                                    <input type="hidden" name="tableau['.$etudiant["id"].'][email]" value="'.$etudiant['email'].'" />
-                                                    '.$etudiant['id'].'</td><td>'.$etudiant['numero'].'</td><td>'.$etudiant['email'].'</td></tr>';                     
-                                                }
-                                            }                    
+                                    ?>
+                                    <form method="post" id="form-sendtext-mails">
+                                        <input type="hidden" name="nameValue" value="<?php echo $name; ?> " />            
+                                        <input type="hidden" name="objectValue" value="<?php echo $object; ?>" />  
+                                        <input type="hidden" name="messageValue" value="<?php echo $message; ?>" /> 
+                                        <input type="hidden" name="students" value="<?php echo $_POST['students']; ?>" />
+                                        <?php
+                                        for ($i = 0; $i <= count($attachments)-1; $i++) {
+                                            echo '<input type="hidden" name="attachment' . $i . '" value="'.$attachments[$i].'" />';
+                                        }
+                                        ?>
+                                        <input type="hidden" name="attachmentsLength" value="<?php echo count($attachments); ?>" />
+                                        <div class="table-content">     
+                                            <table class="tabletext" align="center">
+                                                <thead><tr><th>ID</th><th>N° Étudiant</th><th>Email</th></thead>
+                                                <?php
+                                                    if (($handle = fopen($file, "r")) !== FALSE) {
+                                                        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                                                            $num = count($data);
+                                                            $row++;
+                                                            for ($c=0; $c < $num; $c++) {
+                                                                $value = explode(";",$data[$c]);
+                                                            }              
+                                                            foreach($etudiants as $etudiant){
+                                                                if($etudiant['numero'] == $value[0]){ 
+                                                                    echo '<tr><td>
+                                                                    <input type="hidden" name="tableau['.$etudiant["id"].'][email]" value="'.$etudiant['email'].'" />
+                                                                    '.$etudiant['id'].'</td><td>'.$etudiant['numero'].'</td><td>'.$etudiant['email'].'</td></tr>';                     
+                                                                }
+                                                            }                    
 
-                                        }        
-                                        fclose($handle);
-                                        unlink($file);
-                                    }
-                                    echo '</table>';
-                                    echo '</div>';
-                                    echo '<button id="sendmail" type="submit" class="submit mail-button mail-button-submit" name="sendMail">Envoyer les messages</button>';
-                                    echo '<button style="display:none;" type="button" class="submit mail-button mail-button-load">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>';
-                                    echo '</form>';            
+                                                        }        
+                                                        fclose($handle);
+                                                        unlink($file);
+                                                    }
+                                                    ?>
+                                            </table>
+                                        </div>
+                                        <button id="sendmail" type="submit" class="submit mail-button mail-button-submit" name="sendMail">Envoyer les messages</button>
+                                        <button style="display:none;" type="button" class="submit mail-button mail-button-load">Chargement <i class="fa fa-cog fa-spin fa-2x fa-fw"></i></button>
+                                    </form>   
+                                    <?php         
                                 }
                             }
                         }
