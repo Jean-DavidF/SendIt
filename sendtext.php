@@ -77,7 +77,7 @@ require 'parameters.php';
                         <br />
                         <label for="attachment">Ajouter une ou plusieurs pièces jointes (optionnel)</label>                        
                         <div class="input-form">
-                            <div class="file-upload-wrapper attachment-upload-block" data-text="Sélectionnez votre fichier">
+                            <div class="file-upload-wrapper attachment-upload-block" data-text="Sélectionnez un ou plusieurs fichiers">
                                 <input name="attachments[]" id="attachment" type="file" class="file-upload-field" value="" multiple>
                             </div>
                         </div>
