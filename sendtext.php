@@ -46,6 +46,10 @@ require 'parameters.php';
             </ul>
         </div>
 
+        <div class="undo">
+            <a href="choice.php"><i class="fa fa-undo"></i></a>
+        </div>
+
         <div class="wrapper">
             <div class="container" id="container-1">
                 <div class="header">

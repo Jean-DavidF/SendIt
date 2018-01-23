@@ -31,6 +31,12 @@
 ?>
 
 <body>
+
+<div class="undo">
+    <a href="choice.php"><i class="fa fa-undo"></i></a>
+</div>
+
+
 <div class="wrapper">
     <div class="container">
         <div class="header">
