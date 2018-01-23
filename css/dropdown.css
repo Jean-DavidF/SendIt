@@ -28,10 +28,16 @@
     font-size: 24px;
     font-weight: 100;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    -o-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
     cursor: pointer;
     background: #e81e72;
     color: #fff;
     border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
     outline: none;
     font-family: 'Lato', serif;
     position: relative;
@@ -66,6 +72,9 @@
     z-index: 11;
     top: 25px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    -o-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
 }
 
 .hide {

@@ -98,6 +98,9 @@ h1 {
 
 .container ul:first-child {
 	box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+	-moz-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+	-webkit-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
+	-o-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.07);
 }
 
 .header {
@@ -106,8 +109,14 @@ h1 {
     color: #fff;
     background: #000232;
     font-weight: bold;
-    border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-top-right-radius: 5px;
+    -o-border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-top-left-radius: 5px;
+    -o-border-top-left-radius: 5px;
     text-align: center;
 }
 
@@ -131,6 +140,9 @@ h1 {
 .positions ul {
 	background-color: #fff;
 	border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
 	position: relative;
 	padding-left: 0px;
 	margin-top: 0px;
@@ -184,6 +196,9 @@ h1 {
 	color: #fff;
 	background-color: #3FB8AF;
 	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
 }
 
 .positions .dept {
@@ -219,6 +234,9 @@ h1 {
 	text-decoration: none;
 	color: white;
 	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
 	text-transform: uppercase;
 	font-weight: 700;
 	-webkit-transition: all 0.2s ease-in-out;
@@ -322,10 +340,16 @@ h1 {
     font-size: 22px;
     font-weight: 100;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
+    -o-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.22);
     cursor: pointer;
     background: #e81e72;
     color: #fff;
     border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -webkit-border-radius: 50%;
     outline: none;
     position: relative;
     z-index: 12;

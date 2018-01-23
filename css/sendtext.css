@@ -25,6 +25,9 @@
     text-align: center;
     padding: 15px 40px;
     border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
     text-transform: uppercase;
     color: #fff;
     font-family: 'Lato', serif;
