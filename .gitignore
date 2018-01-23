@@ -2,4 +2,5 @@ email_account.php
 parameters.php
 vendor/*
 historic/*
+!historic/.gitkeep
 .DS_Store
