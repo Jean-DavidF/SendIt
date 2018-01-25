@@ -177,6 +177,7 @@ require 'parameters.php';
                             $name = $_POST["nameValue"];
                             $object = $_POST["objectValue"];
                             $message = $_POST["messageValue"];
+                            $oneMessage = 0;
                             foreach($_POST["tableau"] as $case){
                                 $mail = new PHPMailer;
                                 $mail->CharSet = 'UTF-8';
@@ -212,16 +213,22 @@ require 'parameters.php';
                                     $mail->addAttachment($_POST["attachment" . $i]);
                                 }
                                 if (!$mail->send()) {
+                                    if ($oneMessage == 0) {
                                     echo "<div class='msg m-error'><i class='fa fa-times'></i><p>Erreur Mailer : " . $mail->ErrorInfo . "</p></div>";
+                                    }
+                                    $oneMessage = 1;
                                 } else {
-                                    echo "<div class='msg m-success'><i class='fa fa-check'></i><p> Messages envoyés avec succès !</p></div>";
-                                    echo "<div class='again'><a href='choice.php'>Retour à l'accueil</a></div>";
-                                    echo "<div class='credits'>Développé avec <i class='fa fa-heart'></i> par <a href='http://thomaslaigneau.com/'>Thomas Laigneau</a> et <a href='https://github.com/Jean-DavidF'>Jean-David Flament</a></div>";
-                                }
-                                for ($i = 0; $i <= (int)$_POST['attachmentsLength'] -1; $i++) {
-                                    unlink($_POST["attachment" . $i]);   
-                                }                                                                     
+                                    if ($oneMessage == 0) {
+                                        echo "<div class='msg m-success'><i class='fa fa-check'></i><p> Messages envoyés avec succès !</p></div>";
+                                        echo "<div class='again'><a href='choice.php'>Retour à l'accueil</a></div>";
+                                        echo "<div class='credits'>Développé avec <i class='fa fa-heart'></i> par <a href='http://thomaslaigneau.com/'>Thomas Laigneau</a> et <a href='https://github.com/Jean-DavidF'>Jean-David Flament</a></div>";
+                                    }
+                                    $oneMessage = 1;
+                                }                                                
                             }
+                            for ($i = 0; $i <= (int)$_POST['attachmentsLength'] -1; $i++) {
+                                unlink($_POST["attachment" . $i]);   
+                            }  
                         }
 
                         ?>
